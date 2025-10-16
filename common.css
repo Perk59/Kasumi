@@ -1,0 +1,706 @@
+/* かすみ薬局 共通スタイル */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Poppins:wght@300;400;500&display=swap');
+
+/* 基本設定 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --main-color: #b8e0d2;
+  --sub-color: #fffdf5;
+  --accent-color: #f8c6b8;
+  --text-color: #333333;
+  --text-secondary: #666666;
+  --gray-light: #f5f5f5;
+  --gray-medium: #ddd;
+  --header-height: 70px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  color: var(--text-color);
+  background-color: #ffffff;
+  line-height: 1.9;
+  overflow-x: hidden;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 高齢者・ユニバーサルデザイン配慮 */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* 大きい文字設定への対応 */
+@media (min-resolution: 2dppx) {
+  body {
+    font-size: 17px;
+  }
+}
+
+/* ハイコントラストモード対応 */
+@media (prefers-contrast: high) {
+  body {
+    color: #000;
+    background-color: #fff;
+  }
+  
+  a {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+  }
+  
+  .btn {
+    border: 3px solid currentColor;
+  }
+}
+
+/* スキップリンク（アクセシビリティ対応） */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  background: #b8e0d2;
+  color: white;
+  padding: 12px 20px;
+  text-decoration: none;
+  font-weight: 700;
+  z-index: 10000;
+  border-radius: 0 0 8px 0;
+  transition: top 0.3s ease;
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: 3px solid #333;
+  outline-offset: 2px;
+}
+
+/* アクセシビリティ基本設定 */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* フォーカス表示（キーボード操作対応） */
+*:focus-visible {
+  outline: 3px solid var(--main-color);
+  outline-offset: 2px;
+}
+
+button, a, input, textarea, select {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+input, textarea, select {
+  font-size: 16px;
+}
+
+/* ヘッダー */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--header-height);
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  z-index: 1000;
+  animation: slideDown 0.6s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.header-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--main-color);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.02);
+}
+
+.logo-icon {
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, var(--main-color), #95d5c1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 18px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 32px;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 500;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  position: relative;
+  padding: 6px 0;
+  display: block;
+}
+
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--main-color);
+  transition: width 0.3s ease;
+}
+
+nav a:hover {
+  color: var(--main-color);
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+nav a.active {
+  color: var(--main-color);
+}
+
+nav a.active::after {
+  width: 100%;
+}
+
+/* ハンバーガーメニュー */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+  padding: 8px;
+  background: none;
+  border: none;
+  z-index: 1001;
+}
+
+.menu-toggle span {
+  width: 26px;
+  height: 3px;
+  background-color: var(--text-color);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* メインコンテンツ */
+main {
+  margin-top: var(--header-height);
+  min-height: calc(100vh - var(--header-height));
+  background-color: #ffffff;
+}
+
+/* 共通セクション */
+section {
+  padding: 80px 24px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease-out;
+}
+
+section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: 36px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 12px;
+  color: var(--text-color);
+  line-height: 1.3;
+}
+
+.section-subtitle {
+  font-size: 13px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  text-align: center;
+  color: #999;
+  margin-bottom: 48px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* ボタン */
+.btn {
+  display: inline-block;
+  padding: 16px 36px;
+  background: linear-gradient(135deg, var(--main-color), #95d5c1);
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(184, 224, 210, 0.3);
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  min-height: 50px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(184, 224, 210, 0.4);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background: linear-gradient(135deg, var(--accent-color), #f5b5a0);
+  box-shadow: 0 4px 12px rgba(248, 198, 184, 0.3);
+}
+
+.btn-secondary:hover {
+  box-shadow: 0 6px 16px rgba(248, 198, 184, 0.4);
+}
+
+/* カード */
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 32px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+/* フッター */
+footer {
+  background: linear-gradient(135deg, var(--main-color), #95d5c1);
+  color: white;
+  padding: 60px 24px 30px;
+  margin-top: 80px;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.footer-section h3 {
+  font-size: 18px;
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+.footer-section p,
+.footer-section a {
+  font-size: 14px;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+}
+
+.footer-section a:hover {
+  text-decoration: underline;
+  color: white;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-links a {
+  padding: 6px 0;
+  display: block;
+  transition: all 0.3s ease;
+}
+
+.footer-links a:hover {
+  padding-left: 8px;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.footer-bottom p {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+}
+
+/* トップに戻るボタン */
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, var(--main-color), #95d5c1);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(184, 224, 210, 0.4);
+  z-index: 999;
+  font-size: 20px;
+  border: none;
+  padding: 0;
+  font-weight: bold;
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.back-to-top:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(184, 224, 210, 0.6);
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 900px) {
+  :root {
+    --header-height: 70px;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  nav {
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    width: 100%;
+    height: calc(100vh - var(--header-height));
+    background-color: #ffffff;
+    padding: 32px 24px;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    box-shadow: 2px 0 12px rgba(0, 0, 0, 0.15);
+    max-height: calc(100vh - var(--header-height));
+    overflow-y: auto;
+    z-index: 999;
+  }
+
+  nav.active {
+    transform: translateX(0);
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 0;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  nav li {
+    width: 100%;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  nav li:last-child {
+    border-bottom: none;
+  }
+
+  nav a {
+    font-size: 16px;
+    padding: 16px 12px;
+    display: block;
+    width: 100%;
+    min-height: 56px;
+    display: flex;
+    align-items: center;
+  }
+
+  nav a::after {
+    display: none;
+  }
+
+  nav a:hover {
+    background-color: #f9f9f9;
+  }
+
+  nav a.active {
+    background-color: #f0f8f6;
+    font-weight: 700;
+  }
+
+  .section-title {
+    font-size: 28px;
+  }
+
+  section {
+    padding: 60px 20px;
+  }
+
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .footer-links a {
+    padding: 8px 0;
+    display: block;
+  }
+
+  .back-to-top {
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 640px) {
+  .logo {
+    font-size: 18px;
+  }
+
+  .logo-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+  }
+
+  .section-title {
+    font-size: 24px;
+  }
+
+  .section-subtitle {
+    font-size: 12px;
+    margin-bottom: 32px;
+  }
+
+  .card {
+    padding: 20px;
+  }
+
+  .btn {
+    padding: 14px 28px;
+    font-size: 14px;
+    width: 100%;
+  }
+
+  section {
+    padding: 48px 16px;
+  }
+
+  .container {
+    padding: 0;
+  }
+
+  nav {
+    padding: 24px 20px;
+  }
+
+  nav a {
+    font-size: 15px;
+    min-height: 52px;
+    padding: 14px 10px;
+  }
+
+  .footer-content {
+    gap: 28px;
+  }
+
+  .footer-section {
+    text-align: left;
+  }
+
+  .footer-links {
+    gap: 10px;
+  }
+
+  .footer-links a {
+    font-size: 14px;
+    padding: 6px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --header-height: 64px;
+  }
+
+  header {
+    height: 64px;
+  }
+
+  main {
+    margin-top: 64px;
+  }
+
+  .header-container {
+    padding: 0 16px;
+  }
+
+  .logo {
+    font-size: 16px;
+  }
+
+  .logo-icon {
+    width: 28px;
+    height: 28px;
+    font-size: 14px;
+  }
+
+  .section-title {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+
+  .section-subtitle {
+    font-size: 11px;
+    margin-bottom: 24px;
+  }
+
+  section {
+    padding: 40px 12px;
+  }
+
+  .card {
+    padding: 16px;
+  }
+
+  .container {
+    padding: 0;
+  }
+
+  body {
+    font-size: 15px;
+  }
+
+  nav {
+    padding: 20px 16px;
+    top: 64px;
+    height: calc(100vh - 64px);
+  }
+
+  nav a {
+    padding: 12px 8px;
+    font-size: 15px;
+    min-height: 48px;
+  }
+
+  .footer-content {
+    gap: 24px;
+  }
+
+  .footer-section h3 {
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+
+  .footer-section p,
+  .footer-section a {
+    font-size: 13px;
+  }
+
+  .footer-links {
+    gap: 8px;
+  }
+
+  .footer-links a {
+    font-size: 13px;
+    padding: 5px 0;
+  }
+
+  .footer-bottom {
+    font-size: 12px;
+    padding-top: 20px;
+  }
+
+  .footer-note {
+    font-size: 11px;
+    margin-top: 8px;
+  }
+}
