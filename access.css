@@ -1,378 +1,447 @@
-/* かすみ薬局 営業時間・アクセスページスタイル */
+/* かすみ薬局 営業時間・アクセスページスタイル - 原研哉風デザイン */
 
 /* ページヘッダー */
 .page-header {
-  background: linear-gradient(135deg, #b8e0d2 0%, #95d5c1 100%);
-  color: white;
+  background: var(--color-bg);
   text-align: center;
-  padding: 140px 24px 80px;
-  margin-top: -70px;
-  padding-top: 180px;
+  padding: 80px 24px 60px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.page-header .container {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .page-header h1 {
-  font-size: 48px;
-  font-weight: 700;
-  margin-bottom: 16px;
-  animation: fadeInDown 0.6s ease-out;
-  line-height: 1.2;
+  font-size: 36px;
+  font-weight: 400;
+  margin: 0 0 12px 0;
+  line-height: 1.4;
+  color: var(--color-primary);
+  letter-spacing: 0.08em;
+  font-family: 'Noto Serif JP', serif;
 }
 
-.page-header p {
-  font-size: 14px;
-  font-family: 'Poppins', sans-serif;
+.page-subtitle {
+  font-size: 12px;
   font-weight: 300;
-  letter-spacing: 3px;
-  opacity: 0.95;
-  animation: fadeInUp 0.6s ease-out 0.2s both;
-}
-
-@keyframes fadeInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  color: var(--color-text-light);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin: 0;
 }
 
 /* 店舗紹介セクション */
 .stores-intro {
-  background-color: #ffffff;
+  background-color: var(--color-bg-light);
+  padding: 80px 24px;
+}
+
+.stores-intro .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.section-title {
+  font-size: 28px;
+  font-weight: 400;
+  margin: 0 0 8px 0;
+  text-align: center;
+  color: var(--color-primary);
+  letter-spacing: 0.08em;
+  font-family: 'Noto Serif JP', serif;
+}
+
+.section-subtitle {
+  font-size: 11px;
+  font-weight: 300;
+  color: var(--color-text-light);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 0 0 48px 0;
 }
 
 .store-selector {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
-  gap: 12px;
-  margin-bottom: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .store-link {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 14px;
-  background: white;
-  border-radius: 8px;
+  gap: 10px;
+  padding: 20px 16px;
+  background: var(--color-bg);
   text-decoration: none;
-  color: #333;
-  font-weight: 600;
+  color: var(--color-text);
+  font-weight: 500;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-  border: 2px solid transparent;
+  border: 1px solid var(--color-border);
   font-size: 14px;
-  min-height: 48px;
-  cursor: pointer;
+  letter-spacing: 0.05em;
+  min-height: 60px;
 }
 
 .store-link:hover {
-  background: #b8e0d2;
-  color: white;
-  transform: translateY(-3px);
-  box-shadow: 0 4px 12px rgba(184, 224, 210, 0.2);
-  border-color: #95d5c1;
+  background: var(--color-primary);
+  color: var(--color-bg);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.store-link:focus-visible {
-  outline: 3px solid #b8e0d2;
-  outline-offset: 2px;
+.store-link i {
+  font-size: 14px;
 }
 
 /* 店舗詳細セクション */
 .stores-detail {
-  background-color: #f9f9f9;
+  background-color: var(--color-bg);
+  padding: 80px 24px;
+}
+
+.stores-detail .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .store-card {
-  background: white;
-  border-radius: 8px;
-  margin-bottom: 24px;
-  border-left: 4px solid #b8e0d2;
-  animation: slideInUp 0.6s ease-out;
-  animation-fill-mode: both;
+  background: var(--color-bg);
+  margin-bottom: 60px;
+  border: 1px solid var(--color-border);
   transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  width: 100%;
 }
 
-.store-card:nth-of-type(1) { animation-delay: 0s; }
-.store-card:nth-of-type(2) { animation-delay: 0.05s; }
-.store-card:nth-of-type(3) { animation-delay: 0.1s; }
-.store-card:nth-of-type(4) { animation-delay: 0.15s; }
-.store-card:nth-of-type(5) { animation-delay: 0.2s; }
-.store-card:nth-of-type(6) { animation-delay: 0.25s; }
-.store-card:nth-of-type(7) { animation-delay: 0.3s; }
-.store-card:nth-of-type(8) { animation-delay: 0.35s; }
-
-@keyframes slideInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.store-card:last-child {
+  margin-bottom: 0;
 }
 
 .store-card:hover {
-  transform: translateX(8px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  border-left-color: #f8c6b8;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
 }
 
 .store-header {
   padding: 24px;
-  background: #f9f9f9;
-  border-bottom: 1px solid #f0f0f0;
+  background: var(--color-bg-light);
+  border-bottom: 1px solid var(--color-border);
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 16px;
+  flex-wrap: wrap;
 }
 
 .store-header h3 {
   font-size: 20px;
-  font-weight: 700;
-  color: #333;
+  font-weight: 500;
+  color: var(--color-primary);
   margin: 0;
+  letter-spacing: 0.08em;
 }
 
 .store-badge {
   display: inline-block;
-  padding: 6px 14px;
-  background: linear-gradient(135deg, #b8e0d2, #95d5c1);
-  color: white;
-  border-radius: 6px;
-  font-size: 11px;
-  font-weight: 700;
+  padding: 8px 20px;
+  background: var(--color-bg);
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  font-size: 12px;
+  font-weight: 500;
   white-space: nowrap;
+  letter-spacing: 0.1em;
+  flex-shrink: 0;
+}
+
+.store-badge.kasumi {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
 }
 
 .store-badge.minori {
-  background: linear-gradient(135deg, #f8c6b8, #f5b5a0);
+  border-color: var(--color-secondary);
+  color: var(--color-secondary);
+}
+
+/* 店舗写真 */
+.store-photo {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  background: var(--color-bg-light);
+  border-bottom: 1px solid var(--color-border);
+  overflow: hidden;
+  display: block;
+}
+
+.store-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.photo-placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg-light);
+  color: var(--color-border);
+  z-index: 0;
+}
+
+.store-photo img[src$=".jpg"],
+.store-photo img[src$=".jpeg"],
+.store-photo img[src$=".png"],
+.store-photo img[src$=".webp"],
+.store-photo img[src$=".gif"] {
+  z-index: 1;
+}
+
+.store-photo img[src$=".jpg"] ~ .photo-placeholder,
+.store-photo img[src$=".jpeg"] ~ .photo-placeholder,
+.store-photo img[src$=".png"] ~ .photo-placeholder,
+.store-photo img[src$=".webp"] ~ .photo-placeholder,
+.store-photo img[src$=".gif"] ~ .photo-placeholder {
+  display: none;
+}
+
+.photo-placeholder i {
+  font-size: 56px;
+  margin-bottom: 16px;
+  opacity: 0.3;
+}
+
+.photo-placeholder p {
+  font-size: 14px;
+  color: var(--color-text-light);
+  letter-spacing: 0.1em;
+  margin: 0;
 }
 
 .store-content {
-  padding: 24px;
+  padding: 32px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .store-description {
   font-size: 14px;
-  line-height: 1.9;
-  color: #555;
-  margin-bottom: 24px;
+  line-height: 2;
+  color: var(--color-text);
+  margin: 0 0 32px 0;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--color-border);
+  letter-spacing: 0.05em;
 }
 
 .store-info {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
 }
 
 .info-item {
-  font-size: 13px;
-  line-height: 1.8;
-  color: #666;
-}
-
-.info-item strong {
-  display: block;
-  font-weight: 700;
-  color: #333;
-  margin-bottom: 8px;
-  font-size: 14px;
-}
-
-/* FAQ セクション */
-.faq-section {
-  background-color: #ffffff;
-}
-
-.faq-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
-}
-
-.faq-item {
-  background: white;
-  border-radius: 8px;
-  overflow: hidden;
-  transition: all 0.3s ease;
-  animation: fadeInUp 0.6s ease-out;
-  animation-fill-mode: both;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-  border: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-.faq-item:nth-child(1) { animation-delay: 0s; }
-.faq-item:nth-child(2) { animation-delay: 0.1s; }
-.faq-item:nth-child(3) { animation-delay: 0.2s; }
-.faq-item:nth-child(4) { animation-delay: 0.3s; }
-
-.faq-item:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.faq-question {
-  padding: 20px;
-  background: #f9f9f9;
-  cursor: pointer;
   display: flex;
+  gap: 16px;
   align-items: flex-start;
-  gap: 12px;
-  transition: all 0.3s ease;
-  border: none;
+  padding: 20px;
+  background: var(--color-bg-light);
+  border-left: 3px solid var(--color-primary);
   width: 100%;
-  text-align: left;
+  box-sizing: border-box;
 }
 
-.faq-item:hover .faq-question {
-  background: #f0f8f6;
-}
-
-.faq-icon {
-  font-size: 18px;
+.info-icon {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--color-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
-  margin-top: 2px;
+  color: var(--color-primary);
+  font-size: 16px;
 }
 
-.faq-question p {
-  font-size: 15px;
-  font-weight: 600;
-  color: #333;
-  text-align: left;
+.info-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.info-content strong {
+  display: block;
+  font-weight: 500;
+  color: var(--color-primary);
+  margin: 0 0 8px 0;
+  font-size: 14px;
+  letter-spacing: 0.05em;
+}
+
+.info-content p {
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--color-text);
+  letter-spacing: 0.02em;
   margin: 0;
 }
 
-.faq-answer {
-  padding: 20px;
-  background: white;
-  border-top: 1px solid #f0f0f0;
+.info-content a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: opacity 0.3s ease;
 }
 
-.faq-answer p {
-  font-size: 13px;
-  line-height: 1.8;
-  color: #666;
-  text-align: left;
+.info-content a:hover {
+  opacity: 0.7;
+  text-decoration: underline;
 }
 
 /* CTA セクション */
 .access-cta {
-  background: linear-gradient(135deg, #b8e0d2 0%, #95d5c1 100%);
-  color: white;
+  background: var(--color-bg-light);
   text-align: center;
-  padding: 60px 24px !important;
+  padding: 80px 24px;
+  border-top: 1px solid var(--color-border);
+}
+
+.access-cta .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .access-cta h2 {
-  font-size: 32px;
-  font-weight: 700;
-  margin-bottom: 32px;
-  animation: fadeInDown 0.8s ease-out;
+  font-size: 28px;
+  font-weight: 400;
+  margin: 0 0 32px 0;
+  color: var(--color-primary);
+  letter-spacing: 0.08em;
+  font-family: 'Noto Serif JP', serif;
 }
 
 .access-cta .btn {
-  background: white;
-  color: #b8e0d2;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  font-weight: 700;
-  font-size: 16px;
-  animation: fadeInUp 0.8s ease-out 0.1s both;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.access-cta .btn:hover {
-  background: #fffdf5;
-  color: #95d5c1;
+.access-cta .btn i {
+  font-size: 16px;
 }
 
 /* レスポンシブデザイン */
-@media (max-width: 900px) {
+@media (min-width: 1201px) {
   .page-header {
-    padding: 120px 20px 60px;
-    padding-top: 140px;
+    padding: 100px 24px 80px;
   }
 
   .page-header h1 {
-    font-size: 36px;
+    font-size: 42px;
+  }
+
+  .stores-intro {
+    padding: 100px 24px;
+  }
+
+  .section-title {
+    font-size: 32px;
+  }
+
+  .stores-detail {
+    padding: 100px 24px;
+  }
+
+  .store-card {
+    margin-bottom: 80px;
+  }
+
+  .store-photo {
+    height: 450px;
+  }
+
+  .access-cta {
+    padding: 100px 24px;
+  }
+
+  .access-cta h2 {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 900px) {
+  .page-header {
+    padding: 60px 20px 48px;
+  }
+
+  .page-header h1 {
+    font-size: 30px;
+  }
+
+  .stores-intro {
+    padding: 60px 20px;
+  }
+
+  .section-title {
+    font-size: 24px;
+  }
+
+  .section-subtitle {
+    margin-bottom: 40px;
+  }
+
+  .store-selector {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+  }
+
+  .stores-detail {
+    padding: 60px 20px;
+  }
+
+  .store-card {
+    margin-bottom: 48px;
+  }
+
+  .store-photo {
+    height: 320px;
   }
 
   .store-header {
-    flex-direction: column;
-    align-items: flex-start;
+    padding: 20px;
   }
 
   .store-header h3 {
     font-size: 18px;
   }
 
-  .store-info {
-    grid-template-columns: 1fr;
-  }
-
-  .faq-list {
-    grid-template-columns: 1fr;
-  }
-
-  .access-cta h2 {
-    font-size: 28px;
-  }
-
-  .store-selector {
-    grid-template-columns: repeat(auto-fit, minmax(95px, 1fr));
-    gap: 10px;
-  }
-
-  .store-link {
-    font-size: 13px;
-    padding: 12px;
-  }
-}
-
-@media (max-width: 640px) {
-  .page-header {
-    padding: 100px 16px 50px;
-    padding-top: 120px;
-  }
-
-  .page-header h1 {
-    font-size: 28px;
-  }
-
-  .page-header p {
-    font-size: 12px;
-  }
-
-  .store-header {
-    padding: 16px;
-  }
-
-  .store-header h3 {
-    font-size: 16px;
-  }
-
   .store-content {
-    padding: 16px;
+    padding: 24px;
   }
 
   .store-description {
-    font-size: 13px;
-    margin-bottom: 16px;
+    margin-bottom: 24px;
+    padding-bottom: 20px;
   }
 
   .store-info {
@@ -380,129 +449,268 @@
   }
 
   .info-item {
-    font-size: 12px;
-  }
-
-  .faq-question {
     padding: 16px;
   }
 
-  .faq-question p {
-    font-size: 14px;
-  }
-
-  .faq-answer {
-    padding: 16px;
-  }
-
-  .faq-answer p {
-    font-size: 12px;
+  .access-cta {
+    padding: 60px 20px;
   }
 
   .access-cta h2 {
     font-size: 24px;
-  }
-
-  .store-selector {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 8px;
+    margin-bottom: 28px;
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 640px) {
   .page-header {
-    padding: 90px 12px 40px;
-    padding-top: 110px;
+    padding: 48px 16px 40px;
   }
 
   .page-header h1 {
     font-size: 24px;
   }
 
-  .page-header p {
+  .page-subtitle {
     font-size: 11px;
+  }
+
+  .stores-intro {
+    padding: 48px 16px;
+  }
+
+  .section-title {
+    font-size: 20px;
+  }
+
+  .section-subtitle {
+    font-size: 10px;
+    margin-bottom: 32px;
   }
 
   .store-selector {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 8px;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 10px;
   }
 
   .store-link {
+    font-size: 13px;
+    padding: 16px 12px;
+    gap: 8px;
+  }
+
+  .store-link i {
     font-size: 12px;
-    padding: 10px;
-    min-height: 44px;
   }
 
-  .store-header {
-    padding: 12px;
+  .stores-detail {
+    padding: 48px 16px;
   }
 
-  .store-header h3 {
-    font-size: 14px;
+  .store-card {
+    margin-bottom: 40px;
   }
 
-  .store-badge {
-    font-size: 10px;
-    padding: 4px 10px;
+  .store-photo {
+    height: 280px;
   }
 
-  .store-content {
-    padding: 12px;
+  .photo-placeholder i {
+    font-size: 48px;
+    margin-bottom: 12px;
   }
 
-  .store-description {
-    font-size: 12px;
-    line-height: 1.8;
-  }
-
-  .store-info {
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
-
-  .info-item {
-    font-size: 11px;
-  }
-
-  .info-item strong {
-    font-size: 12px;
-    margin-bottom: 4px;
-  }
-
-  .faq-question {
-    padding: 12px;
-  }
-
-  .faq-icon {
-    font-size: 16px;
-  }
-
-  .faq-question p {
+  .photo-placeholder p {
     font-size: 13px;
   }
 
-  .faq-answer {
-    padding: 12px;
+  .store-header {
+    padding: 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
   }
 
-  .faq-answer p {
+  .store-header h3 {
+    font-size: 16px;
+  }
+
+  .store-badge {
     font-size: 11px;
-    line-height: 1.6;
+    padding: 6px 16px;
+  }
+
+  .store-content {
+    padding: 20px;
+  }
+
+  .store-description {
+    font-size: 13px;
+    line-height: 1.9;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+  }
+
+  .store-info {
+    gap: 14px;
+  }
+
+  .info-item {
+    padding: 14px;
+    gap: 12px;
+  }
+
+  .info-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+  }
+
+  .info-content strong {
+    font-size: 13px;
+    margin-bottom: 6px;
+  }
+
+  .info-content p {
+    font-size: 13px;
+    line-height: 1.7;
   }
 
   .access-cta {
-    padding: 40px 12px !important;
+    padding: 48px 16px;
   }
 
   .access-cta h2 {
     font-size: 20px;
     margin-bottom: 24px;
   }
+}
 
-  .access-cta .btn {
+@media (max-width: 480px) {
+  .page-header {
+    padding: 40px 12px 32px;
+  }
+
+  .page-header h1 {
+    font-size: 20px;
+  }
+
+  .page-subtitle {
+    font-size: 10px;
+  }
+
+  .stores-intro {
+    padding: 40px 12px;
+  }
+
+  .section-title {
+    font-size: 18px;
+  }
+
+  .section-subtitle {
+    font-size: 9px;
+    margin-bottom: 28px;
+  }
+
+  .store-selector {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .store-link {
+    font-size: 12px;
+    padding: 14px 10px;
+    flex-direction: column;
+    gap: 6px;
+    min-height: 50px;
+  }
+
+  .store-link i {
+    font-size: 11px;
+  }
+
+  .stores-detail {
+    padding: 40px 12px;
+  }
+
+  .store-card {
+    margin-bottom: 32px;
+  }
+
+  .store-photo {
+    height: 240px;
+  }
+
+  .photo-placeholder i {
+    font-size: 40px;
+    margin-bottom: 10px;
+  }
+
+  .photo-placeholder p {
+    font-size: 12px;
+  }
+
+  .store-header {
+    padding: 14px;
+    gap: 10px;
+  }
+
+  .store-header h3 {
+    font-size: 15px;
+  }
+
+  .store-badge {
+    font-size: 10px;
+    padding: 5px 14px;
+  }
+
+  .store-content {
+    padding: 16px;
+  }
+
+  .store-description {
+    font-size: 12px;
+    line-height: 1.8;
+    margin-bottom: 18px;
+    padding-bottom: 14px;
+  }
+
+  .store-info {
+    gap: 12px;
+  }
+
+  .info-item {
+    padding: 12px;
+    gap: 10px;
+    border-left-width: 2px;
+  }
+
+  .info-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 13px;
+  }
+
+  .info-content strong {
+    font-size: 12px;
+    margin-bottom: 5px;
+  }
+
+  .info-content p {
+    font-size: 12px;
+    line-height: 1.7;
+  }
+
+  .access-cta {
+    padding: 40px 12px;
+  }
+
+  .access-cta h2 {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+
+  .access-cta .btn i {
     font-size: 14px;
-    padding: 12px 24px;
-    min-height: 44px;
   }
 }
