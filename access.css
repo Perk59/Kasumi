@@ -1,0 +1,508 @@
+/* かすみ薬局 営業時間・アクセスページスタイル */
+
+/* ページヘッダー */
+.page-header {
+  background: linear-gradient(135deg, #b8e0d2 0%, #95d5c1 100%);
+  color: white;
+  text-align: center;
+  padding: 140px 24px 80px;
+  margin-top: -70px;
+  padding-top: 180px;
+}
+
+.page-header h1 {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  animation: fadeInDown 0.6s ease-out;
+  line-height: 1.2;
+}
+
+.page-header p {
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  letter-spacing: 3px;
+  opacity: 0.95;
+  animation: fadeInUp 0.6s ease-out 0.2s both;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 店舗紹介セクション */
+.stores-intro {
+  background-color: #ffffff;
+}
+
+.store-selector {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.store-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px;
+  background: white;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  border: 2px solid transparent;
+  font-size: 14px;
+  min-height: 48px;
+  cursor: pointer;
+}
+
+.store-link:hover {
+  background: #b8e0d2;
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(184, 224, 210, 0.2);
+  border-color: #95d5c1;
+}
+
+.store-link:focus-visible {
+  outline: 3px solid #b8e0d2;
+  outline-offset: 2px;
+}
+
+/* 店舗詳細セクション */
+.stores-detail {
+  background-color: #f9f9f9;
+}
+
+.store-card {
+  background: white;
+  border-radius: 8px;
+  margin-bottom: 24px;
+  border-left: 4px solid #b8e0d2;
+  animation: slideInUp 0.6s ease-out;
+  animation-fill-mode: both;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.store-card:nth-of-type(1) { animation-delay: 0s; }
+.store-card:nth-of-type(2) { animation-delay: 0.05s; }
+.store-card:nth-of-type(3) { animation-delay: 0.1s; }
+.store-card:nth-of-type(4) { animation-delay: 0.15s; }
+.store-card:nth-of-type(5) { animation-delay: 0.2s; }
+.store-card:nth-of-type(6) { animation-delay: 0.25s; }
+.store-card:nth-of-type(7) { animation-delay: 0.3s; }
+.store-card:nth-of-type(8) { animation-delay: 0.35s; }
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.store-card:hover {
+  transform: translateX(8px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-left-color: #f8c6b8;
+}
+
+.store-header {
+  padding: 24px;
+  background: #f9f9f9;
+  border-bottom: 1px solid #f0f0f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.store-header h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #333;
+  margin: 0;
+}
+
+.store-badge {
+  display: inline-block;
+  padding: 6px 14px;
+  background: linear-gradient(135deg, #b8e0d2, #95d5c1);
+  color: white;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.store-badge.minori {
+  background: linear-gradient(135deg, #f8c6b8, #f5b5a0);
+}
+
+.store-content {
+  padding: 24px;
+}
+
+.store-description {
+  font-size: 14px;
+  line-height: 1.9;
+  color: #555;
+  margin-bottom: 24px;
+}
+
+.store-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+}
+
+.info-item {
+  font-size: 13px;
+  line-height: 1.8;
+  color: #666;
+}
+
+.info-item strong {
+  display: block;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+/* FAQ セクション */
+.faq-section {
+  background-color: #ffffff;
+}
+
+.faq-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.faq-item {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  animation: fadeInUp 0.6s ease-out;
+  animation-fill-mode: both;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.faq-item:nth-child(1) { animation-delay: 0s; }
+.faq-item:nth-child(2) { animation-delay: 0.1s; }
+.faq-item:nth-child(3) { animation-delay: 0.2s; }
+.faq-item:nth-child(4) { animation-delay: 0.3s; }
+
+.faq-item:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.faq-question {
+  padding: 20px;
+  background: #f9f9f9;
+  cursor: pointer;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  transition: all 0.3s ease;
+  border: none;
+  width: 100%;
+  text-align: left;
+}
+
+.faq-item:hover .faq-question {
+  background: #f0f8f6;
+}
+
+.faq-icon {
+  font-size: 18px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.faq-question p {
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
+  text-align: left;
+  margin: 0;
+}
+
+.faq-answer {
+  padding: 20px;
+  background: white;
+  border-top: 1px solid #f0f0f0;
+}
+
+.faq-answer p {
+  font-size: 13px;
+  line-height: 1.8;
+  color: #666;
+  text-align: left;
+}
+
+/* CTA セクション */
+.access-cta {
+  background: linear-gradient(135deg, #b8e0d2 0%, #95d5c1 100%);
+  color: white;
+  text-align: center;
+  padding: 60px 24px !important;
+}
+
+.access-cta h2 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 32px;
+  animation: fadeInDown 0.8s ease-out;
+}
+
+.access-cta .btn {
+  background: white;
+  color: #b8e0d2;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  font-weight: 700;
+  font-size: 16px;
+  animation: fadeInUp 0.8s ease-out 0.1s both;
+}
+
+.access-cta .btn:hover {
+  background: #fffdf5;
+  color: #95d5c1;
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 900px) {
+  .page-header {
+    padding: 120px 20px 60px;
+    padding-top: 140px;
+  }
+
+  .page-header h1 {
+    font-size: 36px;
+  }
+
+  .store-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .store-header h3 {
+    font-size: 18px;
+  }
+
+  .store-info {
+    grid-template-columns: 1fr;
+  }
+
+  .faq-list {
+    grid-template-columns: 1fr;
+  }
+
+  .access-cta h2 {
+    font-size: 28px;
+  }
+
+  .store-selector {
+    grid-template-columns: repeat(auto-fit, minmax(95px, 1fr));
+    gap: 10px;
+  }
+
+  .store-link {
+    font-size: 13px;
+    padding: 12px;
+  }
+}
+
+@media (max-width: 640px) {
+  .page-header {
+    padding: 100px 16px 50px;
+    padding-top: 120px;
+  }
+
+  .page-header h1 {
+    font-size: 28px;
+  }
+
+  .page-header p {
+    font-size: 12px;
+  }
+
+  .store-header {
+    padding: 16px;
+  }
+
+  .store-header h3 {
+    font-size: 16px;
+  }
+
+  .store-content {
+    padding: 16px;
+  }
+
+  .store-description {
+    font-size: 13px;
+    margin-bottom: 16px;
+  }
+
+  .store-info {
+    gap: 16px;
+  }
+
+  .info-item {
+    font-size: 12px;
+  }
+
+  .faq-question {
+    padding: 16px;
+  }
+
+  .faq-question p {
+    font-size: 14px;
+  }
+
+  .faq-answer {
+    padding: 16px;
+  }
+
+  .faq-answer p {
+    font-size: 12px;
+  }
+
+  .access-cta h2 {
+    font-size: 24px;
+  }
+
+  .store-selector {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-header {
+    padding: 90px 12px 40px;
+    padding-top: 110px;
+  }
+
+  .page-header h1 {
+    font-size: 24px;
+  }
+
+  .page-header p {
+    font-size: 11px;
+  }
+
+  .store-selector {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+
+  .store-link {
+    font-size: 12px;
+    padding: 10px;
+    min-height: 44px;
+  }
+
+  .store-header {
+    padding: 12px;
+  }
+
+  .store-header h3 {
+    font-size: 14px;
+  }
+
+  .store-badge {
+    font-size: 10px;
+    padding: 4px 10px;
+  }
+
+  .store-content {
+    padding: 12px;
+  }
+
+  .store-description {
+    font-size: 12px;
+    line-height: 1.8;
+  }
+
+  .store-info {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .info-item {
+    font-size: 11px;
+  }
+
+  .info-item strong {
+    font-size: 12px;
+    margin-bottom: 4px;
+  }
+
+  .faq-question {
+    padding: 12px;
+  }
+
+  .faq-icon {
+    font-size: 16px;
+  }
+
+  .faq-question p {
+    font-size: 13px;
+  }
+
+  .faq-answer {
+    padding: 12px;
+  }
+
+  .faq-answer p {
+    font-size: 11px;
+    line-height: 1.6;
+  }
+
+  .access-cta {
+    padding: 40px 12px !important;
+  }
+
+  .access-cta h2 {
+    font-size: 20px;
+    margin-bottom: 24px;
+  }
+
+  .access-cta .btn {
+    font-size: 14px;
+    padding: 12px 24px;
+    min-height: 44px;
+  }
+}
