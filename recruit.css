@@ -1,0 +1,412 @@
+/* かすみ薬局 採用情報ページスタイル */
+
+/* ページヘッダー */
+.page-header {
+  background: linear-gradient(135deg, #b8e0d2 0%, #95d5c1 100%);
+  color: white;
+  text-align: center;
+  padding: 120px 24px 60px;
+}
+
+.page-header h1 {
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+.page-header p {
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  letter-spacing: 3px;
+  opacity: 0.95;
+}
+
+/* メッセージセクション */
+.recruit-message {
+  background-color: #ffffff;
+}
+
+.message-card {
+  background: white;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  border-left: 4px solid #b8e0d2;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.message-text {
+  font-size: 16px;
+  line-height: 2;
+  color: #555;
+  text-align: center;
+}
+
+/* 採用情報セクション */
+.recruit-section {
+  background-color: #f9f9f9;
+}
+
+.recruit-section:nth-of-type(even) {
+  background-color: #ffffff;
+}
+
+.recruit-card {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 32px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.recruit-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.recruit-table tr {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.recruit-table tr:last-child {
+  border-bottom: none;
+}
+
+.recruit-table tr:hover {
+  background: #f9f9f9;
+}
+
+.recruit-table td {
+  padding: 16px 20px;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.recruit-label {
+  background: #f9f9f9;
+  font-weight: 700;
+  color: #333;
+  width: 140px;
+  vertical-align: top;
+}
+
+.recruit-table td {
+  color: #555;
+}
+
+.recruit-note {
+  display: block;
+  font-size: 13px;
+  color: #999;
+  margin-top: 6px;
+  line-height: 1.6;
+}
+
+/* コンタクトボックス */
+.contact-box {
+  background: linear-gradient(135deg, #b8e0d2, #95d5c1);
+  color: white;
+  padding: 32px;
+  border-radius: 8px;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.contact-box h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.contact-box p {
+  font-size: 14px;
+  line-height: 1.9;
+  opacity: 0.95;
+}
+
+.contact-box strong {
+  font-weight: 700;
+  display: block;
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+
+/* なぜかすみ薬局で働くのか */
+.recruit-why {
+  background-color: #ffffff;
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.why-item {
+  background: white;
+  padding: 32px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.why-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  border-color: #b8e0d2;
+}
+
+.why-icon {
+  font-size: 40px;
+  margin-bottom: 16px;
+  display: inline-block;
+}
+
+.why-item h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 12px;
+}
+
+.why-item p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #666;
+}
+
+/* CTA セクション */
+.recruit-cta {
+  background: linear-gradient(135deg, #b8e0d2 0%, #95d5c1 100%);
+  color: white;
+  text-align: center;
+  padding: 60px 24px !important;
+}
+
+.recruit-cta h2 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.recruit-cta p {
+  font-size: 18px;
+  margin-bottom: 32px;
+  opacity: 0.95;
+}
+
+.recruit-cta .btn {
+  background: white;
+  color: #b8e0d2;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  font-weight: 700;
+}
+
+.recruit-cta .btn:hover {
+  background: #fffdf5;
+  color: #95d5c1;
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 900px) {
+  .page-header {
+    padding: 100px 20px 50px;
+  }
+
+  .page-header h1 {
+    font-size: 32px;
+  }
+
+  .recruit-table td {
+    padding: 12px 16px;
+    font-size: 14px;
+  }
+
+  .recruit-label {
+    width: 120px;
+  }
+
+  .contact-box {
+    padding: 24px;
+  }
+
+  .why-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .page-header {
+    padding: 90px 16px 40px;
+  }
+
+  .page-header h1 {
+    font-size: 28px;
+  }
+
+  .message-card {
+    padding: 24px;
+  }
+
+  .message-text {
+    font-size: 15px;
+    text-align: left;
+  }
+
+  .recruit-card {
+    margin-bottom: 20px;
+  }
+
+  .recruit-table td {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+
+  .recruit-label {
+    width: 100px;
+  }
+
+  .recruit-note {
+    font-size: 12px;
+    margin-top: 4px;
+  }
+
+  .contact-box {
+    padding: 20px;
+  }
+
+  .contact-box h3 {
+    font-size: 16px;
+  }
+
+  .contact-box p {
+    font-size: 13px;
+  }
+
+  .why-item {
+    padding: 24px;
+  }
+
+  .why-icon {
+    font-size: 32px;
+  }
+
+  .why-item h3 {
+    font-size: 16px;
+  }
+
+  .why-item p {
+    font-size: 14px;
+  }
+
+  .recruit-cta h2 {
+    font-size: 24px;
+  }
+
+  .recruit-cta p {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-header {
+    padding: 80px 12px 32px;
+  }
+
+  .page-header h1 {
+    font-size: 24px;
+  }
+
+  .page-header p {
+    font-size: 12px;
+  }
+
+  .message-card {
+    padding: 20px;
+  }
+
+  .message-text {
+    font-size: 14px;
+    line-height: 1.8;
+  }
+
+  .recruit-table td {
+    display: block;
+    width: 100% !important;
+    padding: 8px 12px;
+  }
+
+  .recruit-table tr {
+    display: block;
+    margin-bottom: 12px;
+    border: 1px solid #f0f0f0;
+    border-radius: 6px;
+    padding: 12px;
+    background: white;
+  }
+
+  .recruit-label {
+    font-weight: 700;
+    margin-bottom: 4px;
+    width: 100%;
+    background: transparent;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .recruit-note {
+    margin-top: 2px;
+    font-size: 11px;
+  }
+
+  .contact-box {
+    padding: 16px;
+  }
+
+  .contact-box h3 {
+    font-size: 15px;
+  }
+
+  .contact-box p {
+    font-size: 12px;
+  }
+
+  .contact-box strong {
+    font-size: 14px;
+  }
+
+  .why-item {
+    padding: 20px;
+  }
+
+  .why-icon {
+    font-size: 28px;
+  }
+
+  .why-item h3 {
+    font-size: 15px;
+  }
+
+  .why-item p {
+    font-size: 13px;
+  }
+
+  .recruit-cta {
+    padding: 40px 12px !important;
+  }
+
+  .recruit-cta h2 {
+    font-size: 20px;
+  }
+
+  .recruit-cta p {
+    font-size: 14px;
+    margin-bottom: 24px;
+  }
+}
