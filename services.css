@@ -1,0 +1,523 @@
+/* かすみ薬局 サービス内容ページスタイル */
+
+/* ページヘッダー */
+.page-header {
+  background: linear-gradient(135deg, #b8e0d2 0%, #95d5c1 100%);
+  color: white;
+  text-align: center;
+  padding: 120px 24px 60px;
+}
+
+.page-header h1 {
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+.page-header p {
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  letter-spacing: 3px;
+  opacity: 0.95;
+}
+
+/* サービス概要 */
+.services-intro {
+  background-color: #ffffff;
+  text-align: center;
+}
+
+.intro-text {
+  font-size: 16px;
+  line-height: 2;
+  color: #666;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* 主要サービス */
+.main-services {
+  background-color: #f9f9f9;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+}
+
+.service-card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.service-card:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  transform: translateY(-3px);
+}
+
+.service-header {
+  padding: 32px;
+  background: linear-gradient(135deg, rgba(184, 224, 210, 0.1), rgba(248, 198, 184, 0.05));
+  border-bottom: 2px solid #b8e0d2;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.service-icon {
+  font-size: 48px;
+  flex-shrink: 0;
+}
+
+.service-header h3 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #333;
+}
+
+.service-content {
+  padding: 32px;
+}
+
+.service-lead {
+  font-size: 16px;
+  line-height: 1.9;
+  color: #555;
+  margin-bottom: 24px;
+  font-weight: 500;
+}
+
+.service-details {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.detail-item {
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 6px;
+  border-left: 3px solid #b8e0d2;
+}
+
+.detail-item dt {
+  font-size: 16px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 12px;
+}
+
+.detail-item dd {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #666;
+}
+
+.detail-item ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.detail-item li {
+  padding-left: 20px;
+  position: relative;
+}
+
+.detail-item li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #b8e0d2;
+  font-weight: 700;
+}
+
+/* その他のサービス */
+.additional-services {
+  background-color: #ffffff;
+}
+
+.additional-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.additional-card {
+  background: white;
+  padding: 32px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.additional-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  border-color: #b8e0d2;
+}
+
+.additional-icon {
+  font-size: 40px;
+  margin-bottom: 16px;
+  display: inline-block;
+}
+
+.additional-card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 12px;
+}
+
+.additional-card p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #666;
+}
+
+/* ご利用の流れ */
+.service-flow {
+  background-color: #f9f9f9;
+}
+
+.flow-steps {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 900px;
+  margin: 0 auto;
+  counter-reset: step;
+}
+
+.flow-step {
+  display: flex;
+  gap: 24px;
+  padding: 24px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.flow-step:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  transform: translateX(5px);
+}
+
+.step-number {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, #b8e0d2, #95d5c1);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+}
+
+.step-content h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.step-content p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #666;
+}
+
+/* CTA */
+.services-cta {
+  background: linear-gradient(135deg, #b8e0d2 0%, #95d5c1 100%);
+  color: white;
+  text-align: center;
+  padding: 60px 24px !important;
+}
+
+.services-cta h2 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.services-cta p {
+  font-size: 18px;
+  margin-bottom: 32px;
+  opacity: 0.95;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.services-cta .btn {
+  background: white;
+  color: #b8e0d2;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  font-weight: 700;
+}
+
+.services-cta .btn:hover {
+  background: #fffdf5;
+  color: #95d5c1;
+}
+
+.services-cta .btn-secondary {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 2px solid white;
+}
+
+.services-cta .btn-secondary:hover {
+  background: white;
+  color: #b8e0d2;
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 900px) {
+  .page-header {
+    padding: 100px 20px 50px;
+  }
+
+  .page-header h1 {
+    font-size: 32px;
+  }
+
+  .intro-text {
+    font-size: 15px;
+  }
+
+  .service-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .service-header h3 {
+    font-size: 20px;
+  }
+
+  .additional-grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+
+  .flow-step {
+    gap: 16px;
+  }
+}
+
+@media (max-width: 640px) {
+  .page-header {
+    padding: 90px 16px 40px;
+  }
+
+  .page-header h1 {
+    font-size: 28px;
+  }
+
+  .intro-text {
+    font-size: 14px;
+  }
+
+  .service-header {
+    padding: 24px;
+  }
+
+  .service-icon {
+    font-size: 40px;
+  }
+
+  .service-header h3 {
+    font-size: 18px;
+  }
+
+  .service-content {
+    padding: 24px;
+  }
+
+  .service-lead {
+    font-size: 15px;
+  }
+
+  .detail-item {
+    padding: 16px;
+  }
+
+  .detail-item dt {
+    font-size: 15px;
+  }
+
+  .detail-item dd {
+    font-size: 14px;
+  }
+
+  .additional-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .additional-card {
+    padding: 24px;
+  }
+
+  .flow-step {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .step-number {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+
+  .step-content h3 {
+    font-size: 16px;
+  }
+
+  .step-content p {
+    font-size: 14px;
+  }
+
+  .services-cta h2 {
+    font-size: 24px;
+  }
+
+  .services-cta p {
+    font-size: 16px;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-header {
+    padding: 80px 12px 32px;
+  }
+
+  .page-header h1 {
+    font-size: 24px;
+  }
+
+  .page-header p {
+    font-size: 12px;
+  }
+
+  .intro-text {
+    font-size: 13px;
+    line-height: 1.8;
+  }
+
+  .service-header {
+    padding: 20px;
+  }
+
+  .service-icon {
+    font-size: 36px;
+  }
+
+  .service-header h3 {
+    font-size: 16px;
+  }
+
+  .service-content {
+    padding: 20px;
+  }
+
+  .service-lead {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  .service-details {
+    gap: 16px;
+  }
+
+  .detail-item {
+    padding: 12px;
+  }
+
+  .detail-item dt {
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+
+  .detail-item dd {
+    font-size: 13px;
+  }
+
+  .detail-item li {
+    padding-left: 16px;
+    font-size: 13px;
+  }
+
+  .additional-card {
+    padding: 20px;
+  }
+
+  .additional-icon {
+    font-size: 32px;
+  }
+
+  .additional-card h3 {
+    font-size: 16px;
+  }
+
+  .additional-card p {
+    font-size: 14px;
+  }
+
+  .flow-step {
+    padding: 16px;
+  }
+
+  .step-number {
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+  }
+
+  .step-content h3 {
+    font-size: 15px;
+  }
+
+  .step-content p {
+    font-size: 13px;
+  }
+
+  .services-cta {
+    padding: 40px 12px !important;
+  }
+
+  .services-cta h2 {
+    font-size: 20px;
+  }
+
+  .services-cta p {
+    font-size: 14px;
+    margin-bottom: 24px;
+  }
+}
