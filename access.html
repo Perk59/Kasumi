@@ -6,14 +6,636 @@
   <meta name="description" content="かすみ薬局・みのり薬局の営業時間・アクセス情報。岡山市・倉敷市に7店舗展開。">
   <title>営業時間・アクセス | かすみ薬局・みのり薬局</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="common.css">
-  <link rel="stylesheet" href="access.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@300;400;500&display=swap');
+
+    /* 基本設定 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --color-primary: #2d6e4f;
+      --color-secondary: #4a7c59;
+      --color-accent: #5a9d73;
+      --color-bg: #ffffff;
+      --color-bg-light: #f5f9f7;
+      --color-border: #c5d5cc;
+      --color-text: #1a1a1a;
+      --color-text-light: #4a4a4a;
+      --header-height: 80px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      color: var(--color-text);
+      background-color: var(--color-bg);
+      line-height: 1.8;
+      overflow-x: hidden;
+      font-size: 16px;
+    }
+
+    /* ヘッダー */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: var(--header-height);
+      background-color: var(--color-bg);
+      border-bottom: 1px solid var(--color-border);
+      z-index: 1000;
+    }
+
+    .header-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 32px;
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-text {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--color-primary);
+      letter-spacing: 0.1em;
+      white-space: nowrap;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--color-text);
+      font-weight: 400;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      position: relative;
+      padding: 6px 0;
+      letter-spacing: 0.05em;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background-color: var(--color-primary);
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover::after,
+    nav a.active::after {
+      width: 100%;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      cursor: pointer;
+      padding: 8px;
+      background: none;
+      border: none;
+      z-index: 1001;
+    }
+
+    .menu-toggle span {
+      width: 24px;
+      height: 1px;
+      background-color: var(--color-primary);
+      transition: all 0.3s ease;
+    }
+
+    /* メインコンテンツ */
+    main {
+      margin-top: var(--header-height);
+      min-height: calc(100vh - var(--header-height));
+    }
+
+    /* ページヘッダー */
+    .page-header {
+      background: var(--color-bg);
+      text-align: center;
+      padding: 80px 24px 60px;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .page-header h1 {
+      font-size: 36px;
+      font-weight: 400;
+      margin: 0 0 12px 0;
+      color: var(--color-primary);
+      letter-spacing: 0.08em;
+      font-family: 'Noto Serif JP', serif;
+    }
+
+    .page-subtitle {
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--color-text-light);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    /* 店舗紹介セクション */
+    .stores-intro {
+      background-color: var(--color-bg-light);
+      padding: 80px 24px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 28px;
+      font-weight: 400;
+      margin: 0 0 8px 0;
+      text-align: center;
+      color: var(--color-primary);
+      letter-spacing: 0.08em;
+      font-family: 'Noto Serif JP', serif;
+    }
+
+    .section-subtitle {
+      font-size: 11px;
+      font-weight: 300;
+      color: var(--color-text-light);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-align: center;
+      margin: 0 0 48px 0;
+    }
+
+    .store-selector {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 16px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .store-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 20px 16px;
+      background: var(--color-bg);
+      text-decoration: none;
+      color: var(--color-text);
+      font-weight: 500;
+      transition: all 0.3s ease;
+      border: 1px solid var(--color-border);
+      font-size: 14px;
+      letter-spacing: 0.05em;
+      min-height: 60px;
+    }
+
+    .store-link:hover {
+      background: var(--color-primary);
+      color: var(--color-bg);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    /* 店舗詳細セクション */
+    .stores-detail {
+      background-color: var(--color-bg);
+      padding: 80px 24px;
+    }
+
+    .store-card {
+      background: var(--color-bg);
+      margin-bottom: 60px;
+      border: 1px solid var(--color-border);
+      transition: all 0.3s ease;
+      overflow: hidden;
+    }
+
+    .store-card:hover {
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    }
+
+    .store-header {
+      padding: 24px;
+      background: var(--color-bg-light);
+      border-bottom: 1px solid var(--color-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .store-header h3 {
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--color-primary);
+      margin: 0;
+      letter-spacing: 0.08em;
+    }
+
+    .store-badge {
+      display: inline-block;
+      padding: 8px 20px;
+      background: var(--color-bg);
+      color: var(--color-primary);
+      border: 1px solid var(--color-primary);
+      font-size: 12px;
+      font-weight: 500;
+      white-space: nowrap;
+      letter-spacing: 0.1em;
+    }
+
+    .store-badge.kasumi {
+      border-color: var(--color-accent);
+      color: var(--color-accent);
+    }
+
+    .store-badge.minori {
+      border-color: var(--color-secondary);
+      color: var(--color-secondary);
+    }
+
+    .store-photo {
+      position: relative;
+      width: 100%;
+      height: 400px;
+      background: var(--color-bg-light);
+      border-bottom: 1px solid var(--color-border);
+      overflow: hidden;
+    }
+
+    .store-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .store-content {
+      padding: 32px;
+    }
+
+    .store-description {
+      font-size: 14px;
+      line-height: 2;
+      color: var(--color-text);
+      margin: 0 0 32px 0;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--color-border);
+      letter-spacing: 0.05em;
+    }
+
+    .store-info {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .info-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 20px;
+      background: var(--color-bg-light);
+      border-left: 3px solid var(--color-primary);
+    }
+
+    .info-icon {
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--color-primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--color-primary);
+      font-size: 16px;
+    }
+
+    .info-content {
+      flex: 1;
+    }
+
+    .info-content strong {
+      display: block;
+      font-weight: 500;
+      color: var(--color-primary);
+      margin: 0 0 8px 0;
+      font-size: 14px;
+      letter-spacing: 0.05em;
+    }
+
+    .info-content p {
+      font-size: 14px;
+      line-height: 1.8;
+      color: var(--color-text);
+      letter-spacing: 0.02em;
+      margin: 0;
+    }
+
+    .info-content a {
+      color: var(--color-primary);
+      text-decoration: none;
+    }
+
+    .info-content a:hover {
+      text-decoration: underline;
+    }
+
+    /* CTA */
+    .access-cta {
+      background: var(--color-bg-light);
+      text-align: center;
+      padding: 80px 24px;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .access-cta h2 {
+      font-size: 28px;
+      font-weight: 400;
+      margin: 0 0 32px 0;
+      color: var(--color-primary);
+      letter-spacing: 0.08em;
+      font-family: 'Noto Serif JP', serif;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 40px;
+      background: var(--color-primary);
+      color: var(--color-bg);
+      text-decoration: none;
+      border: 1px solid var(--color-primary);
+      font-weight: 400;
+      transition: all 0.3s ease;
+      font-size: 14px;
+      letter-spacing: 0.1em;
+    }
+
+    .btn:hover {
+      background: transparent;
+      color: var(--color-primary);
+    }
+
+    /* フッター */
+    footer {
+      background: var(--color-bg-light);
+      color: var(--color-text);
+      padding: 64px 32px 32px;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 64px;
+      margin-bottom: 64px;
+    }
+
+    .footer-section h3 {
+      font-size: 14px;
+      margin-bottom: 16px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      color: var(--color-primary);
+    }
+
+    .footer-section p {
+      font-size: 13px;
+      line-height: 1.8;
+      color: var(--color-text-light);
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .footer-links a {
+      font-size: 13px;
+      color: var(--color-text-light);
+      text-decoration: none;
+      padding: 4px 0;
+    }
+
+    .footer-links a:hover {
+      color: var(--color-primary);
+      text-decoration: underline;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 32px;
+      border-top: 1px solid var(--color-border);
+      font-size: 12px;
+      color: var(--color-text-light);
+    }
+
+    /* レスポンシブ */
+    @media (max-width: 900px) {
+      :root {
+        --header-height: 70px;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      nav {
+        position: fixed;
+        top: var(--header-height);
+        left: 0;
+        width: 100%;
+        height: calc(100vh - var(--header-height));
+        background-color: var(--color-bg);
+        padding: 32px;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        border-right: 1px solid var(--color-border);
+        overflow-y: auto;
+        z-index: 999;
+      }
+
+      nav.active {
+        transform: translateX(0);
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 0;
+        align-items: flex-start;
+        width: 100%;
+      }
+
+      nav li {
+        width: 100%;
+        border-bottom: 1px solid var(--color-border);
+      }
+
+      nav a {
+        font-size: 15px;
+        padding: 16px;
+        display: block;
+        width: 100%;
+      }
+
+      .page-header {
+        padding: 60px 20px 48px;
+      }
+
+      .page-header h1 {
+        font-size: 30px;
+      }
+
+      .stores-intro {
+        padding: 60px 20px;
+      }
+
+      .section-title {
+        font-size: 24px;
+      }
+
+      .store-selector {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      }
+
+      .stores-detail {
+        padding: 60px 20px;
+      }
+
+      .store-card {
+        margin-bottom: 48px;
+      }
+
+      .store-photo {
+        height: 320px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page-header {
+        padding: 48px 16px 40px;
+      }
+
+      .page-header h1 {
+        font-size: 24px;
+      }
+
+      .stores-intro {
+        padding: 48px 16px;
+      }
+
+      .section-title {
+        font-size: 20px;
+      }
+
+      .store-selector {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      }
+
+      .stores-detail {
+        padding: 48px 16px;
+      }
+
+      .store-card {
+        margin-bottom: 40px;
+      }
+
+      .store-photo {
+        height: 280px;
+      }
+
+      .store-header {
+        padding: 16px;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .store-content {
+        padding: 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .page-header h1 {
+        font-size: 20px;
+      }
+
+      .section-title {
+        font-size: 18px;
+      }
+
+      .store-selector {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .store-link {
+        font-size: 12px;
+        padding: 14px 10px;
+        flex-direction: column;
+      }
+
+      .store-photo {
+        height: 240px;
+      }
+
+      .store-content {
+        padding: 16px;
+      }
+
+      .info-item {
+        padding: 12px;
+        gap: 10px;
+      }
+
+      .info-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 13px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <!-- ヘッダー -->
   <header>
     <div class="header-container">
-      <a href="index.html" class="logo">
+      <a href="#" class="logo">
         <span class="logo-text">かすみ薬局 みのり薬局</span>
       </a>
       <button class="menu-toggle" aria-label="メニューを開く" aria-expanded="false">
@@ -26,7 +648,7 @@
           <li><a href="index.html">ホーム</a></li>
           <li><a href="about.html">薬局紹介</a></li>
           <li><a href="services.html">サービス内容</a></li>
-          <li><a href="access.html">店舗情報</a></li>
+          <li><a href="access.html" class="active">店舗情報</a></li>
           <li><a href="legal.html">書面掲示事項</a></li>
           <li><a href="recruit.html">採用情報</a></li>
         </ul>
@@ -34,9 +656,7 @@
     </div>
   </header>
 
-  <!-- メインコンテンツ -->
   <main>
-    <!-- ページヘッダー -->
     <section class="page-header">
       <div class="container">
         <h1>営業時間・アクセス</h1>
@@ -44,12 +664,10 @@
       </div>
     </section>
 
-    <!-- 店舗紹介セクション -->
     <section class="stores-intro">
       <div class="container">
         <h2 class="section-title">ご覧になりたい店舗をお選びください</h2>
         <p class="section-subtitle">SELECT YOUR STORE</p>
-
         <div class="store-selector">
           <a href="#minashima" class="store-link"><i class="fas fa-map-marker-alt"></i> 箕島店</a>
           <a href="#hayashima" class="store-link"><i class="fas fa-map-marker-alt"></i> 早島店</a>
@@ -62,7 +680,6 @@
       </div>
     </section>
 
-    <!-- 店舗詳細情報 -->
     <section class="stores-detail">
       <div class="container">
         <!-- かすみ薬局 箕島店 -->
@@ -71,15 +688,9 @@
             <h3>かすみ薬局　箕島店</h3>
             <span class="store-badge kasumi">かすみ薬局</span>
           </div>
-          
           <div class="store-photo">
-            <img src="images/minashima.jpg" alt="かすみ薬局 箕島店 外観" loading="lazy">
-            <div class="photo-placeholder">
-              <i class="fas fa-image"></i>
-              <p>店舗写真</p>
-            </div>
+            <img src="images/mishima.jpg" alt="かすみ薬局 箕島店 外観" loading="lazy">
           </div>
-          
           <div class="store-content">
             <p class="store-description">
               耳鼻咽喉科・整形外科・循環器科・皮膚科・眼科の処方せんを受け付けています。<br>
@@ -120,15 +731,9 @@
             <h3>かすみ薬局　早島店</h3>
             <span class="store-badge kasumi">かすみ薬局</span>
           </div>
-          
           <div class="store-photo">
             <img src="images/hayashima.jpg" alt="かすみ薬局 早島店 外観" loading="lazy">
-            <div class="photo-placeholder">
-              <i class="fas fa-image"></i>
-              <p>店舗写真</p>
-            </div>
           </div>
-          
           <div class="store-content">
             <p class="store-description">
               内科・整形外科・広域病院の南岡山医療センターの処方せんを受け付けています。<br>
@@ -169,15 +774,9 @@
             <h3>みのり薬局　下庄店</h3>
             <span class="store-badge minori">みのり薬局</span>
           </div>
-          
           <div class="store-photo">
             <img src="images/shimosho.jpg" alt="みのり薬局 下庄店 外観" loading="lazy">
-            <div class="photo-placeholder">
-              <i class="fas fa-image"></i>
-              <p>店舗写真</p>
-            </div>
           </div>
-          
           <div class="store-content">
             <p class="store-description">
               皮膚科・内科・整形外科・歯科・広域病院の南岡山医療センター・岡山赤十字病院の処方せんを受け付けています。
@@ -217,15 +816,9 @@
             <h3>みのり薬局　藤戸店</h3>
             <span class="store-badge minori">みのり薬局</span>
           </div>
-          
           <div class="store-photo">
-            <img src="images/fujido.jpg" alt="みのり薬局 藤戸店 外観" loading="lazy">
-            <div class="photo-placeholder">
-              <i class="fas fa-image"></i>
-              <p>店舗写真</p>
-            </div>
+            <img src="images/fujito.jpg" alt="みのり薬局 藤戸店 外観" loading="lazy">
           </div>
-          
           <div class="store-content">
             <p class="store-description">
               内科・リウマチ科・歯科の処方せんを受け付けています。
@@ -264,15 +857,9 @@
             <h3>みのり薬局　庭瀬店</h3>
             <span class="store-badge minori">みのり薬局</span>
           </div>
-          
           <div class="store-photo">
-            <img src="images/niwa.jpg" alt="みのり薬局 庭瀬店 外観" loading="lazy">
-            <div class="photo-placeholder">
-              <i class="fas fa-image"></i>
-              <p>店舗写真</p>
-            </div>
+            <img src="images/niwase.jpg" alt="みのり薬局 庭瀬店 外観" loading="lazy">
           </div>
-          
           <div class="store-content">
             <p class="store-description">
               眼科・内科の処方せんを受け付けています。
@@ -311,15 +898,9 @@
             <h3>みのり薬局　妹尾店</h3>
             <span class="store-badge minori">みのり薬局</span>
           </div>
-          
           <div class="store-photo">
             <img src="images/senoo.jpg" alt="みのり薬局 妹尾店 外観" loading="lazy">
-            <div class="photo-placeholder">
-              <i class="fas fa-image"></i>
-              <p>店舗写真</p>
-            </div>
           </div>
-          
           <div class="store-content">
             <p class="store-description">
               内科・岡山市立せのお病院・グループホームの施設処方せんを受け付けています。
@@ -359,15 +940,9 @@
             <h3>みのり薬局　辰巳店</h3>
             <span class="store-badge minori">みのり薬局</span>
           </div>
-          
           <div class="store-photo">
             <img src="images/tatumi.jpg" alt="みのり薬局 辰巳店 外観" loading="lazy">
-            <div class="photo-placeholder">
-              <i class="fas fa-image"></i>
-              <p>店舗写真</p>
-            </div>
           </div>
-          
           <div class="store-content">
             <p class="store-description">
               小児科・内科・循環器科・広域病院の岡山赤十字病院の処方せんを受け付けています。
@@ -402,18 +977,16 @@
       </div>
     </section>
 
-    <!-- CTA -->
     <section class="access-cta">
       <div class="container">
         <h2>ご不明な点はお気軽にお問い合わせください</h2>
-        <a href="tel:0862826950" class="btn btn-primary">
+        <a href="tel:0862826950" class="btn">
           <i class="fas fa-phone-alt"></i> 086-282-6950
         </a>
       </div>
     </section>
   </main>
 
-  <!-- フッター -->
   <footer>
     <div class="footer-container">
       <div class="footer-content">
@@ -451,6 +1024,68 @@
     </div>
   </footer>
 
-  <script src="common.js"></script>
+  <script>
+    // ハンバーガーメニュー
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuToggle = document.querySelector('.menu-toggle');
+      const nav = document.querySelector('nav');
+      
+      if (menuToggle && nav) {
+        menuToggle.addEventListener('click', function(e) {
+          e.preventDefault();
+          const isActive = nav.classList.contains('active');
+          
+          if (isActive) {
+            nav.classList.remove('active');
+            menuToggle.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+            const spans = menuToggle.querySelectorAll('span');
+            spans[0].style.transform = 'none';
+            spans[1].style.opacity = '1';
+            spans[2].style.transform = 'none';
+          } else {
+            nav.classList.add('active');
+            menuToggle.setAttribute('aria-expanded', 'true');
+            document.body.style.overflow = 'hidden';
+            const spans = menuToggle.querySelectorAll('span');
+            spans[0].style.transform = 'rotate(45deg) translateY(9px)';
+            spans[1].style.opacity = '0';
+            spans[2].style.transform = 'rotate(-45deg) translateY(-9px)';
+          }
+        });
+
+        // メニューリンクをクリックしたら閉じる
+        nav.querySelectorAll('a').forEach(function(link) {
+          link.addEventListener('click', function() {
+            nav.classList.remove('active');
+            menuToggle.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+            const spans = menuToggle.querySelectorAll('span');
+            spans[0].style.transform = 'none';
+            spans[1].style.opacity = '1';
+            spans[2].style.transform = 'none';
+          });
+        });
+      }
+
+      // スムーススクロール
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          const href = this.getAttribute('href');
+          if (href !== '#' && href !== '') {
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (target) {
+              const offsetTop = target.offsetTop - 80;
+              window.scrollTo({
+                top: offsetTop,
+                behavior: 'smooth'
+              });
+            }
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>
