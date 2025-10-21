@@ -4,56 +4,689 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="かすみ薬局・みのり薬局のサービス内容。処方せん調剤、健康相談、ジェネリック医薬品、在宅医療など幅広く対応しています。">
-  <meta name="keywords" content="処方せん,調剤,健康相談,ジェネリック,在宅医療,かすみ薬局,みのり薬局">
-  <meta http-equiv="X-Content-Type-Options" content="nosniff">
-  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
-  <meta http-equiv="X-XSS-Protection" content="1; mode=block">
-  <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>サービス内容 | かすみ薬局・みのり薬局</title>
-  <link rel="stylesheet" href="common.css">
-  <link rel="stylesheet" href="services.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@300;400;500&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --color-primary: #2d6e4f;
+      --color-secondary: #4a7c59;
+      --color-accent: #5a9d73;
+      --color-bg: #ffffff;
+      --color-bg-light: #f5f9f7;
+      --color-border: #c5d5cc;
+      --color-text: #1a1a1a;
+      --color-text-light: #4a4a4a;
+      --header-height: 80px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      color: var(--color-text);
+      background-color: var(--color-bg);
+      line-height: 1.8;
+      font-size: 16px;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: var(--header-height);
+      background-color: var(--color-bg);
+      border-bottom: 1px solid var(--color-border);
+      z-index: 1000;
+    }
+
+    .header-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 32px;
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      transition: opacity 0.3s ease;
+    }
+
+    .logo:hover {
+      opacity: 0.7;
+    }
+
+    .logo-text {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--color-primary);
+      letter-spacing: 0.1em;
+      white-space: nowrap;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--color-text);
+      font-weight: 400;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      position: relative;
+      padding: 6px 0;
+      letter-spacing: 0.05em;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background-color: var(--color-primary);
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover::after,
+    nav a.active::after {
+      width: 100%;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      cursor: pointer;
+      padding: 8px;
+      background: none;
+      border: none;
+    }
+
+    .menu-toggle span {
+      width: 24px;
+      height: 1px;
+      background-color: var(--color-primary);
+      transition: all 0.3s ease;
+    }
+
+    main {
+      margin-top: var(--header-height);
+      min-height: calc(100vh - var(--header-height));
+    }
+
+    .page-header {
+      background: var(--color-bg);
+      text-align: center;
+      padding: 80px 24px 60px;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .page-header h1 {
+      font-size: 36px;
+      font-weight: 400;
+      margin: 0 0 12px 0;
+      color: var(--color-primary);
+      letter-spacing: 0.08em;
+      font-family: 'Noto Serif JP', serif;
+    }
+
+    .page-subtitle {
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--color-text-light);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section {
+      padding: 80px 24px;
+    }
+
+    .section-title {
+      font-size: 28px;
+      font-weight: 400;
+      margin: 0 0 8px 0;
+      text-align: center;
+      color: var(--color-primary);
+      letter-spacing: 0.08em;
+      font-family: 'Noto Serif JP', serif;
+    }
+
+    .section-subtitle {
+      font-size: 11px;
+      font-weight: 300;
+      color: var(--color-text-light);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-align: center;
+      margin: 0 0 48px 0;
+    }
+
+    /* サービス概要 */
+    .services-intro {
+      background-color: var(--color-bg-light);
+      text-align: center;
+    }
+
+    .intro-text {
+      font-size: 16px;
+      line-height: 2;
+      color: var(--color-text);
+      max-width: 800px;
+      margin: 0 auto;
+      letter-spacing: 0.02em;
+    }
+
+    /* 主要サービス */
+    .main-services {
+      background-color: var(--color-bg);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .service-card {
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .service-card:hover {
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    }
+
+    .service-header {
+      padding: 32px;
+      background: var(--color-bg-light);
+      border-bottom: 1px solid var(--color-border);
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .service-icon {
+      font-size: 48px;
+      color: var(--color-primary);
+      flex-shrink: 0;
+    }
+
+    .service-header h3 {
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--color-primary);
+      letter-spacing: 0.08em;
+    }
+
+    .service-content {
+      padding: 32px;
+    }
+
+    .service-lead {
+      font-size: 16px;
+      line-height: 1.9;
+      color: var(--color-text);
+      margin-bottom: 24px;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+    }
+
+    .service-details {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .detail-item {
+      padding: 20px;
+      background: var(--color-bg-light);
+      border-left: 3px solid var(--color-primary);
+    }
+
+    .detail-item dt {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--color-primary);
+      margin-bottom: 12px;
+      letter-spacing: 0.05em;
+    }
+
+    .detail-item dd {
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--color-text);
+    }
+
+    .detail-item ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .detail-item li {
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .detail-item li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--color-primary);
+      font-weight: 700;
+    }
+
+    /* その他のサービス */
+    .additional-services {
+      background-color: var(--color-bg-light);
+    }
+
+    .additional-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .additional-card {
+      background: var(--color-bg);
+      padding: 32px;
+      text-align: center;
+      border: 1px solid var(--color-border);
+      transition: all 0.3s ease;
+    }
+
+    .additional-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .additional-icon {
+      font-size: 40px;
+      color: var(--color-primary);
+      margin-bottom: 16px;
+      display: inline-block;
+    }
+
+    .additional-card h3 {
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--color-primary);
+      margin-bottom: 12px;
+      letter-spacing: 0.05em;
+    }
+
+    .additional-card p {
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--color-text);
+    }
+
+    /* ご利用の流れ */
+    .service-flow {
+      background-color: var(--color-bg);
+    }
+
+    .flow-steps {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      max-width: 900px;
+      margin: 0 auto;
+      counter-reset: step;
+    }
+
+    .flow-step {
+      display: flex;
+      gap: 24px;
+      padding: 24px;
+      background: var(--color-bg-light);
+      border: 1px solid var(--color-border);
+      transition: all 0.3s ease;
+    }
+
+    .flow-step:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .step-number {
+      flex-shrink: 0;
+      width: 48px;
+      height: 48px;
+      background: var(--color-primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      font-weight: 500;
+    }
+
+    .step-content h3 {
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--color-primary);
+      margin-bottom: 8px;
+      letter-spacing: 0.05em;
+    }
+
+    .step-content p {
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--color-text);
+    }
+
+    /* CTA */
+    .services-cta {
+      background: var(--color-bg-light);
+      text-align: center;
+      padding: 80px 24px;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .services-cta h2 {
+      font-size: 28px;
+      font-weight: 400;
+      margin: 0 0 32px 0;
+      color: var(--color-primary);
+      letter-spacing: 0.08em;
+      font-family: 'Noto Serif JP', serif;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 40px;
+      background: var(--color-primary);
+      color: var(--color-bg);
+      text-decoration: none;
+      border: 1px solid var(--color-primary);
+      font-weight: 400;
+      transition: all 0.3s ease;
+      font-size: 14px;
+      letter-spacing: 0.1em;
+    }
+
+    .btn:hover {
+      background: transparent;
+      color: var(--color-primary);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--color-primary);
+    }
+
+    .btn-secondary:hover {
+      background: var(--color-primary);
+      color: var(--color-bg);
+    }
+
+    /* フッター */
+    footer {
+      background: var(--color-bg-light);
+      color: var(--color-text);
+      padding: 64px 32px 32px;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 64px;
+      margin-bottom: 64px;
+    }
+
+    .footer-section h3 {
+      font-size: 14px;
+      margin-bottom: 16px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      color: var(--color-primary);
+    }
+
+    .footer-section p {
+      font-size: 13px;
+      line-height: 1.8;
+      color: var(--color-text-light);
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .footer-links a {
+      font-size: 13px;
+      color: var(--color-text-light);
+      text-decoration: none;
+      padding: 4px 0;
+    }
+
+    .footer-links a:hover {
+      color: var(--color-primary);
+      text-decoration: underline;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 32px;
+      border-top: 1px solid var(--color-border);
+      font-size: 12px;
+      color: var(--color-text-light);
+    }
+
+    /* レスポンシブ */
+    @media (max-width: 900px) {
+      :root {
+        --header-height: 70px;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      nav {
+        position: fixed;
+        top: var(--header-height);
+        left: 0;
+        width: 100%;
+        height: calc(100vh - var(--header-height));
+        background-color: var(--color-bg);
+        padding: 32px;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        border-right: 1px solid var(--color-border);
+        overflow-y: auto;
+        z-index: 999;
+      }
+
+      nav.active {
+        transform: translateX(0);
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 0;
+        align-items: flex-start;
+        width: 100%;
+      }
+
+      nav li {
+        width: 100%;
+        border-bottom: 1px solid var(--color-border);
+      }
+
+      nav a {
+        font-size: 15px;
+        padding: 16px;
+        display: block;
+        width: 100%;
+      }
+
+      .page-header {
+        padding: 60px 20px 48px;
+      }
+
+      .page-header h1 {
+        font-size: 30px;
+      }
+
+      section {
+        padding: 60px 20px;
+      }
+
+      .section-title {
+        font-size: 24px;
+      }
+
+      .service-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page-header {
+        padding: 48px 16px 40px;
+      }
+
+      .page-header h1 {
+        font-size: 24px;
+      }
+
+      section {
+        padding: 48px 16px;
+      }
+
+      .section-title {
+        font-size: 20px;
+      }
+
+      .service-header {
+        padding: 24px;
+      }
+
+      .service-content {
+        padding: 24px;
+      }
+
+      .additional-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .flow-step {
+        flex-direction: column;
+        padding: 20px;
+      }
+
+      .cta-buttons {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .page-header {
+        padding: 40px 12px 32px;
+      }
+
+      .page-header h1 {
+        font-size: 20px;
+      }
+
+      section {
+        padding: 40px 12px;
+      }
+
+      .section-title {
+        font-size: 18px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <!-- スキップリンク -->
-  <a href="#main-content" class="skip-link">メインコンテンツへスキップ</a>
-
-  <!-- ヘッダー -->
-  <header role="banner">
+  <header>
     <div class="header-container">
-      <a href="index.html" class="logo" aria-label="かすみ薬局ホームページ">
-        <div class="logo-icon" aria-hidden="true">🌿</div>
-        <span>かすみ薬局</span>
+      <a href="index.html" class="logo">
+        <span class="logo-text">かすみ薬局 みのり薬局</span>
       </a>
-      <button class="menu-toggle" aria-label="メニューを開く" aria-expanded="false" aria-controls="main-navigation">
+      <button class="menu-toggle" aria-label="メニューを開く" aria-expanded="false">
         <span></span>
         <span></span>
         <span></span>
       </button>
-      <nav id="main-navigation" role="navigation" aria-label="メインナビゲーション">
+      <nav>
         <ul>
           <li><a href="index.html">ホーム</a></li>
           <li><a href="about.html">薬局紹介</a></li>
-          <li><a href="services.html" aria-current="page">サービス内容</a></li>
+          <li><a href="services.html" class="active">サービス内容</a></li>
           <li><a href="access.html">店舗情報</a></li>
+          <li><a href="legal.html">書面掲示事項</a></li>
           <li><a href="recruit.html">採用情報</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <!-- メインコンテンツ -->
-  <main id="main-content" role="main">
-    <!-- ページヘッダー -->
+  <main>
     <section class="page-header">
-      <h1>サービス内容</h1>
-      <p>Our Services</p>
+      <div class="container">
+        <h1>サービス内容</h1>
+        <p class="page-subtitle">Our Services</p>
+      </div>
     </section>
 
-    <!-- サービス概要 -->
-    <section class="services-intro" aria-labelledby="intro-title">
+    <section class="services-intro">
       <div class="container">
-        <h2 id="intro-title" class="section-title">幅広いサービスで健康をサポート</h2>
-        <p class="section-subtitle">地域のみなさまの健康を総合的に支えます</p>
+        <h2 class="section-title">幅広いサービスで健康をサポート</h2>
+        <p class="section-subtitle">COMPREHENSIVE HEALTHCARE SUPPORT</p>
         <p class="intro-text">
           かすみ薬局・みのり薬局では、処方せん調剤をはじめ、健康相談、ジェネリック医薬品のご提案、在宅医療など、<br>
           幅広いサービスでみなさまの健康をサポートしています。
@@ -61,17 +694,15 @@
       </div>
     </section>
 
-    <!-- 主要サービス -->
-    <section class="main-services" aria-labelledby="main-services-title">
+    <section class="main-services">
       <div class="container">
-        <h2 id="main-services-title" class="section-title">主なサービス</h2>
-        <p class="section-subtitle">3つの柱でサポート</p>
+        <h2 class="section-title">主なサービス</h2>
+        <p class="section-subtitle">MAIN SERVICES</p>
 
         <div class="services-grid">
-          <!-- 処方せん調剤 -->
           <article id="prescription" class="service-card">
             <div class="service-header">
-              <div class="service-icon" aria-hidden="true">💊</div>
+              <div class="service-icon"><i class="fas fa-pills"></i></div>
               <h3>処方せん調剤</h3>
             </div>
             <div class="service-content">
@@ -102,10 +733,9 @@
             </div>
           </article>
 
-          <!-- 健康相談 -->
           <article id="consultation" class="service-card">
             <div class="service-header">
-              <div class="service-icon" aria-hidden="true">❤️</div>
+              <div class="service-icon"><i class="fas fa-heart"></i></div>
               <h3>健康相談</h3>
             </div>
             <div class="service-content">
@@ -134,10 +764,9 @@
             </div>
           </article>
 
-          <!-- ジェネリック医薬品 -->
           <article id="generic" class="service-card">
             <div class="service-header">
-              <div class="service-icon" aria-hidden="true">💚</div>
+              <div class="service-icon"><i class="fas fa-leaf"></i></div>
               <h3>ジェネリック医薬品</h3>
             </div>
             <div class="service-content">
@@ -170,45 +799,44 @@
       </div>
     </section>
 
-    <!-- その他のサービス -->
-    <section class="additional-services" aria-labelledby="additional-title">
+    <section class="additional-services">
       <div class="container">
-        <h2 id="additional-title" class="section-title">その他のサービス</h2>
-        <p class="section-subtitle">さらに充実したサービス</p>
+        <h2 class="section-title">その他のサービス</h2>
+        <p class="section-subtitle">ADDITIONAL SERVICES</p>
 
         <div class="additional-grid">
           <article class="additional-card">
-            <div class="additional-icon" aria-hidden="true">🏠</div>
+            <div class="additional-icon"><i class="fas fa-home"></i></div>
             <h3>在宅医療</h3>
             <p>ご自宅での療養をサポート。お薬の配達や服薬指導を行います。</p>
           </article>
 
           <article class="additional-card">
-            <div class="additional-icon" aria-hidden="true">👨‍⚕️</div>
+            <div class="additional-icon"><i class="fas fa-user-md"></i></div>
             <h3>かかりつけ薬剤師</h3>
             <p>専任の薬剤師が、継続的に健康管理をサポートします。</p>
           </article>
 
           <article class="additional-card">
-            <div class="additional-icon" aria-hidden="true">💊</div>
+            <div class="additional-icon"><i class="fas fa-capsules"></i></div>
             <h3>市販医薬品販売</h3>
             <p>風邪薬、胃薬など、市販医薬品も豊富に取り揃えています。</p>
           </article>
 
           <article class="additional-card">
-            <div class="additional-icon" aria-hidden="true">📚</div>
+            <div class="additional-icon"><i class="fas fa-book-medical"></i></div>
             <h3>お薬手帳管理</h3>
             <p>お薬の記録を一元管理。安全な服薬をサポートします。</p>
           </article>
 
           <article class="additional-card">
-            <div class="additional-icon" aria-hidden="true">🩺</div>
+            <div class="additional-icon"><i class="fas fa-comments"></i></div>
             <h3>健康相談会</h3>
             <p>定期的に健康に関する相談会やセミナーを開催しています。</p>
           </article>
 
           <article class="additional-card">
-            <div class="additional-icon" aria-hidden="true">🏥</div>
+            <div class="additional-icon"><i class="fas fa-hospital"></i></div>
             <h3>施設処方せん対応</h3>
             <p>介護施設やグループホームからの処方せんにも対応しています。</p>
           </article>
@@ -216,15 +844,14 @@
       </div>
     </section>
 
-    <!-- ご利用の流れ -->
-    <section class="service-flow" aria-labelledby="flow-title">
+    <section class="service-flow">
       <div class="container">
-        <h2 id="flow-title" class="section-title">ご利用の流れ</h2>
-        <p class="section-subtitle">初めての方もご安心ください</p>
+        <h2 class="section-title">ご利用の流れ</h2>
+        <p class="section-subtitle">SERVICE FLOW</p>
 
         <ol class="flow-steps">
           <li class="flow-step">
-            <div class="step-number" aria-hidden="true">1</div>
+            <div class="step-number">1</div>
             <div class="step-content">
               <h3>ご来店</h3>
               <p>処方せんをお持ちの上、お近くの店舗へご来店ください。処方せんがなくても、健康相談や市販薬のご購入が可能です。</p>
@@ -232,7 +859,7 @@
           </li>
 
           <li class="flow-step">
-            <div class="step-number" aria-hidden="true">2</div>
+            <div class="step-number">2</div>
             <div class="step-content">
               <h3>受付・問診</h3>
               <p>処方せんをお預かりし、お薬手帳や保険証を確認させていただきます。アレルギーや服用中のお薬についてもお伺いします。</p>
@@ -240,7 +867,7 @@
           </li>
 
           <li class="flow-step">
-            <div class="step-number" aria-hidden="true">3</div>
+            <div class="step-number">3</div>
             <div class="step-content">
               <h3>調剤</h3>
               <p>薬剤師が処方内容を確認し、正確にお薬を調剤します。通常15～30分程度お待ちいただきます。</p>
@@ -248,7 +875,7 @@
           </li>
 
           <li class="flow-step">
-            <div class="step-number" aria-hidden="true">4</div>
+            <div class="step-number">4</div>
             <div class="step-content">
               <h3>服薬指導</h3>
               <p>お薬の飲み方、効果、注意点などを薬剤師がわかりやすくご説明します。ご不明な点はお気軽にお聞きください。</p>
@@ -256,7 +883,7 @@
           </li>
 
           <li class="flow-step">
-            <div class="step-number" aria-hidden="true">5</div>
+            <div class="step-number">5</div>
             <div class="step-content">
               <h3>お会計・お渡し</h3>
               <p>お薬をお渡しし、お会計となります。各種クレジットカード、電子マネーもご利用いただけます（店舗により異なります）。</p>
@@ -266,57 +893,113 @@
       </div>
     </section>
 
-    <!-- CTA -->
-    <section class="services-cta" aria-labelledby="cta-title">
+    <section class="services-cta">
       <div class="container">
-        <h2 id="cta-title">ご不明な点はお気軽にお問い合わせください</h2>
-        <p>各店舗の薬剤師が丁寧に対応いたします</p>
+        <h2>ご不明な点はお気軽にお問い合わせください</h2>
         <div class="cta-buttons">
-          <a href="tel:0862826950" class="btn">📞 お電話で相談</a>
-          <a href="access.html" class="btn btn-secondary">📍 店舗を探す</a>
+          <a href="tel:0862826950" class="btn"><i class="fas fa-phone-alt"></i> お電話で相談</a>
+          <a href="access.html" class="btn btn-secondary"><i class="fas fa-map-marker-alt"></i> 店舗を探す</a>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- フッター -->
-  <footer role="contentinfo">
+  <footer>
     <div class="footer-container">
       <div class="footer-content">
         <div class="footer-section">
           <h3>かすみ薬局・みのり薬局</h3>
           <p>
-            岡山市・倉敷市に8店舗展開。<br>
             地域のみなさまの健康を<br>
-            そっと支える薬局です。
+            そっと支える薬局として、<br>
+            日々寄り添い続けます。
           </p>
         </div>
         <div class="footer-section">
           <h3>リンク</h3>
-          <nav class="footer-links" aria-label="フッターナビゲーション">
+          <div class="footer-links">
             <a href="index.html">ホーム</a>
             <a href="about.html">薬局紹介</a>
             <a href="services.html">サービス内容</a>
             <a href="access.html">店舗情報</a>
+            <a href="legal.html">書面掲示事項</a>
             <a href="recruit.html">採用情報</a>
-          </nav>
+          </div>
         </div>
         <div class="footer-section">
           <h3>お問い合わせ</h3>
           <p>
-            <strong>本社（箕島店）</strong><br>
-            TEL: <a href="tel:0862826950">086-282-6950</a><br>
-            営業時間内にお気軽にお電話ください。
+            TEL: 086-282-6950<br>
+            営業時間内にお気軽にお電話ください。<br>
+            ご質問やご相談をお待ちしています。
           </p>
         </div>
       </div>
       <div class="footer-bottom">
         <p>&copy; 2025 かすみ薬局・みのり薬局. All rights reserved.</p>
-        <p class="footer-note">当サイトは患者様の個人情報保護に配慮し、安全に運営しています。</p>
       </div>
     </div>
   </footer>
 
-  <script src="common.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuToggle = document.querySelector('.menu-toggle');
+      const nav = document.querySelector('nav');
+      
+      if (menuToggle && nav) {
+        menuToggle.addEventListener('click', function(e) {
+          e.preventDefault();
+          const isActive = nav.classList.contains('active');
+          
+          if (isActive) {
+            nav.classList.remove('active');
+            menuToggle.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+            const spans = menuToggle.querySelectorAll('span');
+            spans[0].style.transform = 'none';
+            spans[1].style.opacity = '1';
+            spans[2].style.transform = 'none';
+          } else {
+            nav.classList.add('active');
+            menuToggle.setAttribute('aria-expanded', 'true');
+            document.body.style.overflow = 'hidden';
+            const spans = menuToggle.querySelectorAll('span');
+            spans[0].style.transform = 'rotate(45deg) translateY(9px)';
+            spans[1].style.opacity = '0';
+            spans[2].style.transform = 'rotate(-45deg) translateY(-9px)';
+          }
+        });
+
+        nav.querySelectorAll('a').forEach(function(link) {
+          link.addEventListener('click', function() {
+            nav.classList.remove('active');
+            menuToggle.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+            const spans = menuToggle.querySelectorAll('span');
+            spans[0].style.transform = 'none';
+            spans[1].style.opacity = '1';
+            spans[2].style.transform = 'none';
+          });
+        });
+      }
+
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          const href = this.getAttribute('href');
+          if (href !== '#' && href !== '') {
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (target) {
+              const offsetTop = target.offsetTop - 80;
+              window.scrollTo({
+                top: offsetTop,
+                behavior: 'smooth'
+              });
+            }
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>
