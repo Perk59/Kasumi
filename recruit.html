@@ -4,53 +4,603 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="かすみ薬局の採用情報。薬剤師の新卒・キャリア採用を募集中です。">
-  <title>採用情報 | かすみ薬局</title>
-  <link rel="stylesheet" href="common.css">
-  <link rel="stylesheet" href="recruit.css">
+  <title>採用情報 | かすみ薬局・みのり薬局</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@300;400;500&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --color-primary: #2d6e4f;
+      --color-secondary: #4a7c59;
+      --color-accent: #5a9d73;
+      --color-bg: #ffffff;
+      --color-bg-light: #f5f9f7;
+      --color-border: #c5d5cc;
+      --color-text: #1a1a1a;
+      --color-text-light: #4a4a4a;
+      --header-height: 80px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      color: var(--color-text);
+      background-color: var(--color-bg);
+      line-height: 1.8;
+      font-size: 16px;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: var(--header-height);
+      background-color: var(--color-bg);
+      border-bottom: 1px solid var(--color-border);
+      z-index: 1000;
+    }
+
+    .header-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 32px;
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      transition: opacity 0.3s ease;
+    }
+
+    .logo:hover {
+      opacity: 0.7;
+    }
+
+    .logo-text {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--color-primary);
+      letter-spacing: 0.1em;
+      white-space: nowrap;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--color-text);
+      font-weight: 400;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      position: relative;
+      padding: 6px 0;
+      letter-spacing: 0.05em;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background-color: var(--color-primary);
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover::after,
+    nav a.active::after {
+      width: 100%;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      cursor: pointer;
+      padding: 8px;
+      background: none;
+      border: none;
+    }
+
+    .menu-toggle span {
+      width: 24px;
+      height: 1px;
+      background-color: var(--color-primary);
+      transition: all 0.3s ease;
+    }
+
+    main {
+      margin-top: var(--header-height);
+      min-height: calc(100vh - var(--header-height));
+    }
+
+    .page-header {
+      background: var(--color-bg);
+      text-align: center;
+      padding: 80px 24px 60px;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .page-header h1 {
+      font-size: 36px;
+      font-weight: 400;
+      margin: 0 0 12px 0;
+      color: var(--color-primary);
+      letter-spacing: 0.08em;
+      font-family: 'Noto Serif JP', serif;
+    }
+
+    .page-subtitle {
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--color-text-light);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section {
+      padding: 80px 24px;
+    }
+
+    .section-title {
+      font-size: 28px;
+      font-weight: 400;
+      margin: 0 0 8px 0;
+      text-align: center;
+      color: var(--color-primary);
+      letter-spacing: 0.08em;
+      font-family: 'Noto Serif JP', serif;
+    }
+
+    .section-subtitle {
+      font-size: 11px;
+      font-weight: 300;
+      color: var(--color-text-light);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-align: center;
+      margin: 0 0 48px 0;
+    }
+
+    /* メッセージ */
+    .recruit-message {
+      background-color: var(--color-bg-light);
+    }
+
+    .message-card {
+      background: var(--color-bg);
+      padding: 40px;
+      border: 1px solid var(--color-border);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .message-text {
+      font-size: 16px;
+      line-height: 2;
+      color: var(--color-text);
+      text-align: center;
+      letter-spacing: 0.02em;
+    }
+
+    /* 採用情報 */
+    .recruit-section {
+      background-color: var(--color-bg);
+    }
+
+    .recruit-section:nth-of-type(even) {
+      background-color: var(--color-bg-light);
+    }
+
+    .recruit-card {
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      overflow: hidden;
+      margin-bottom: 32px;
+    }
+
+    .recruit-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .recruit-table tr {
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .recruit-table tr:last-child {
+      border-bottom: none;
+    }
+
+    .recruit-table td {
+      padding: 16px 20px;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .recruit-label {
+      background: var(--color-bg-light);
+      font-weight: 500;
+      color: var(--color-primary);
+      width: 140px;
+      vertical-align: top;
+    }
+
+    .recruit-table td {
+      color: var(--color-text);
+    }
+
+    .recruit-note {
+      display: block;
+      font-size: 13px;
+      color: var(--color-text-light);
+      margin-top: 6px;
+      line-height: 1.6;
+    }
+
+    /* コンタクトボックス */
+    .contact-box {
+      background: var(--color-primary);
+      color: white;
+      padding: 32px;
+      border: 1px solid var(--color-primary);
+      margin-bottom: 40px;
+      text-align: center;
+    }
+
+    .contact-box h3 {
+      font-size: 18px;
+      font-weight: 500;
+      margin-bottom: 16px;
+      letter-spacing: 0.08em;
+    }
+
+    .contact-box p {
+      font-size: 14px;
+      line-height: 1.9;
+      opacity: 0.95;
+    }
+
+    .contact-box strong {
+      font-weight: 500;
+      display: block;
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+
+    /* なぜかすみ薬局で働くのか */
+    .recruit-why {
+      background-color: var(--color-bg-light);
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .why-item {
+      background: var(--color-bg);
+      padding: 32px;
+      text-align: center;
+      border: 1px solid var(--color-border);
+      transition: all 0.3s ease;
+    }
+
+    .why-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .why-icon {
+      font-size: 40px;
+      color: var(--color-primary);
+      margin-bottom: 16px;
+      display: inline-block;
+    }
+
+    .why-item h3 {
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--color-primary);
+      margin-bottom: 12px;
+      letter-spacing: 0.05em;
+    }
+
+    .why-item p {
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--color-text);
+    }
+
+    /* CTA */
+    .recruit-cta {
+      background: var(--color-bg-light);
+      text-align: center;
+      padding: 80px 24px;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .recruit-cta h2 {
+      font-size: 28px;
+      font-weight: 400;
+      margin: 0 0 32px 0;
+      color: var(--color-primary);
+      letter-spacing: 0.08em;
+      font-family: 'Noto Serif JP', serif;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 40px;
+      background: var(--color-primary);
+      color: var(--color-bg);
+      text-decoration: none;
+      border: 1px solid var(--color-primary);
+      font-weight: 400;
+      transition: all 0.3s ease;
+      font-size: 14px;
+      letter-spacing: 0.1em;
+    }
+
+    .btn:hover {
+      background: transparent;
+      color: var(--color-primary);
+    }
+
+    /* フッター */
+    footer {
+      background: var(--color-bg-light);
+      color: var(--color-text);
+      padding: 64px 32px 32px;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 64px;
+      margin-bottom: 64px;
+    }
+
+    .footer-section h3 {
+      font-size: 14px;
+      margin-bottom: 16px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      color: var(--color-primary);
+    }
+
+    .footer-section p {
+      font-size: 13px;
+      line-height: 1.8;
+      color: var(--color-text-light);
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .footer-links a {
+      font-size: 13px;
+      color: var(--color-text-light);
+      text-decoration: none;
+      padding: 4px 0;
+    }
+
+    .footer-links a:hover {
+      color: var(--color-primary);
+      text-decoration: underline;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 32px;
+      border-top: 1px solid var(--color-border);
+      font-size: 12px;
+      color: var(--color-text-light);
+    }
+
+    /* レスポンシブ */
+    @media (max-width: 900px) {
+      :root {
+        --header-height: 70px;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      nav {
+        position: fixed;
+        top: var(--header-height);
+        left: 0;
+        width: 100%;
+        height: calc(100vh - var(--header-height));
+        background-color: var(--color-bg);
+        padding: 32px;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        border-right: 1px solid var(--color-border);
+        overflow-y: auto;
+        z-index: 999;
+      }
+
+      nav.active {
+        transform: translateX(0);
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 0;
+        align-items: flex-start;
+        width: 100%;
+      }
+
+      nav li {
+        width: 100%;
+        border-bottom: 1px solid var(--color-border);
+      }
+
+      nav a {
+        font-size: 15px;
+        padding: 16px;
+        display: block;
+        width: 100%;
+      }
+
+      .page-header {
+        padding: 60px 20px 48px;
+      }
+
+      .page-header h1 {
+        font-size: 30px;
+      }
+
+      section {
+        padding: 60px 20px;
+      }
+
+      .section-title {
+        font-size: 24px;
+      }
+
+      .recruit-label {
+        width: 120px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page-header {
+        padding: 48px 16px 40px;
+      }
+
+      .page-header h1 {
+        font-size: 24px;
+      }
+
+      section {
+        padding: 48px 16px;
+      }
+
+      .section-title {
+        font-size: 20px;
+      }
+
+      .message-card {
+        padding: 24px;
+      }
+
+      .recruit-table td {
+        display: block;
+        width: 100%;
+        padding: 12px;
+      }
+
+      .recruit-label {
+        width: 100%;
+        font-weight: 500;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--color-border);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .page-header {
+        padding: 40px 12px 32px;
+      }
+
+      .page-header h1 {
+        font-size: 20px;
+      }
+
+      section {
+        padding: 40px 12px;
+      }
+
+      .section-title {
+        font-size: 18px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <!-- ヘッダー -->
   <header>
     <div class="header-container">
       <a href="index.html" class="logo">
-        <div class="logo-icon">🌿</div>
-        <span>かすみ薬局</span>
+        <span class="logo-text">かすみ薬局 みのり薬局</span>
       </a>
-      <div class="menu-toggle">
+      <button class="menu-toggle" aria-label="メニューを開く" aria-expanded="false">
         <span></span>
         <span></span>
         <span></span>
-      </div>
+      </button>
       <nav>
         <ul>
           <li><a href="index.html">ホーム</a></li>
           <li><a href="about.html">薬局紹介</a></li>
           <li><a href="services.html">サービス内容</a></li>
-          <li><a href="access.html">営業時間・アクセス</a></li>
-          <li><a href="recruit.html">採用情報</a></li>
+          <li><a href="access.html">店舗情報</a></li>
+          <li><a href="legal.html">書面掲示事項</a></li>
+          <li><a href="recruit.html" class="active">採用情報</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <!-- メインコンテンツ -->
   <main>
-    <!-- ページヘッダー -->
     <section class="page-header">
-      <h1>採用情報</h1>
-      <p>Recruitment</p>
+      <div class="container">
+        <h1>採用情報</h1>
+        <p class="page-subtitle">Recruitment</p>
+      </div>
     </section>
 
-    <!-- 採用担当者からのメッセージ -->
     <section class="recruit-message">
       <div class="container">
         <h2 class="section-title">採用担当者からのメッセージ</h2>
-        <p class="section-subtitle">MESSAGE FROM RECRUITMENT</p>
+        <p class="section-subtitle">MESSAGE</p>
         
-        <div class="message-card card">
+        <div class="message-card">
           <p class="message-text">
             経験豊富な薬剤師さんがおられるので、安心して調剤業務ができる薬局です。<br>
-            チェーン店（8店舗）として、全ての診療科目の処方せんを受け付けているので、<br>
+            チェーン店（7店舗）として、全ての診療科目の処方せんを受け付けているので、<br>
             他にはない豊富な経験と知識を身につける事ができると思います。<br>
             貴方からのエントリーをお待ちしています。
           </p>
@@ -58,13 +608,12 @@
       </div>
     </section>
 
-    <!-- 新卒採用 -->
     <section class="recruit-section">
       <div class="container">
         <h2 class="section-title">新卒者募集要項(正社員)</h2>
         <p class="section-subtitle">NEW GRADUATE RECRUITMENT</p>
 
-        <div class="recruit-card card">
+        <div class="recruit-card">
           <table class="recruit-table">
             <tr>
               <td class="recruit-label">職種</td>
@@ -127,13 +676,12 @@
       </div>
     </section>
 
-    <!-- キャリア採用（正社員） -->
     <section class="recruit-section">
       <div class="container">
         <h2 class="section-title">キャリア募集要項(正社員)</h2>
         <p class="section-subtitle">CAREER RECRUITMENT - FULL TIME</p>
 
-        <div class="recruit-card card">
+        <div class="recruit-card">
           <table class="recruit-table">
             <tr>
               <td class="recruit-label">職種</td>
@@ -198,13 +746,12 @@
       </div>
     </section>
 
-    <!-- キャリア採用（パート） -->
     <section class="recruit-section">
       <div class="container">
         <h2 class="section-title">キャリア募集要項(パート)</h2>
         <p class="section-subtitle">CAREER RECRUITMENT - PART TIME</p>
 
-        <div class="recruit-card card">
+        <div class="recruit-card">
           <table class="recruit-table">
             <tr>
               <td class="recruit-label">職種</td>
@@ -258,45 +805,44 @@
       </div>
     </section>
 
-    <!-- なぜかすみ薬局で働くのか -->
     <section class="recruit-why">
       <div class="container">
         <h2 class="section-title">なぜかすみ薬局で働くのか</h2>
-        <p class="section-subtitle">WHY KASUMI PHARMACY</p>
+        <p class="section-subtitle">WHY WORK WITH US</p>
 
         <div class="why-grid">
-          <div class="why-item card">
-            <div class="why-icon">🎓</div>
+          <div class="why-item">
+            <div class="why-icon"><i class="fas fa-graduation-cap"></i></div>
             <h3>豊富な経験と学び</h3>
-            <p>チェーン店(8店舗)として全ての診療科目の処方せんを受け付けているので、他にはない豊富な経験と知識を身につけることができます。</p>
+            <p>チェーン店(7店舗)として全ての診療科目の処方せんを受け付けているので、他にはない豊富な経験と知識を身につけることができます。</p>
           </div>
 
-          <div class="why-item card">
-            <div class="why-icon">🤝</div>
+          <div class="why-item">
+            <div class="why-icon"><i class="fas fa-handshake"></i></div>
             <h3>経験豊富な先輩</h3>
             <p>経験豊富な薬剤師さんがおられるので、安心して調剤業務ができる薬局です。質問や相談しやすい環境があります。</p>
           </div>
 
-          <div class="why-item card">
-            <div class="why-icon">🌍</div>
+          <div class="why-item">
+            <div class="why-icon"><i class="fas fa-heart"></i></div>
             <h3>地域に貢献</h3>
             <p>地域のみなさまの健康を支える「かかりつけ薬局」として、やりがいのある仕事ができます。</p>
           </div>
 
-          <div class="why-item card">
-            <div class="why-icon">🏢</div>
+          <div class="why-item">
+            <div class="why-icon"><i class="fas fa-building"></i></div>
             <h3>安定した職場</h3>
-            <p>平成24年には開局20周年を迎え、岡山市・倉敷市に安定した8店舗を運営しています。</p>
+            <p>平成24年には開局20周年を迎え、岡山市・倉敷市に安定した7店舗を運営しています。</p>
           </div>
 
-          <div class="why-item card">
-            <div class="why-icon">💼</div>
+          <div class="why-item">
+            <div class="why-icon"><i class="fas fa-shield-alt"></i></div>
             <h3>充実した福利厚生</h3>
             <p>厚生年金・雇用保険・社会保険・退職金制度など、充実した福利厚生で安心の生活をサポートします。</p>
           </div>
 
-          <div class="why-item card">
-            <div class="why-icon">🎯</div>
+          <div class="why-item">
+            <div class="why-icon"><i class="fas fa-chart-line"></i></div>
             <h3>キャリアアップ</h3>
             <p>新卒から経験者まで、個人のキャリアプランに合わせた勤務形態や職場を選択できます。</p>
           </div>
@@ -304,22 +850,19 @@
       </div>
     </section>
 
-    <!-- CTA -->
     <section class="recruit-cta">
       <div class="container">
-        <h2>あなたの力を、地域のために。</h2>
-        <p>かすみ薬局でのキャリアをスタートしませんか？</p>
-        <a href="tel:0862826950" class="btn">📞 086-282-6950</a>
+        <h2>あなたの力を、地域のために</h2>
+        <a href="tel:0862826950" class="btn"><i class="fas fa-phone-alt"></i> 086-282-6950</a>
       </div>
     </section>
   </main>
 
-  <!-- フッター -->
   <footer>
     <div class="footer-container">
       <div class="footer-content">
         <div class="footer-section">
-          <h3>かすみ薬局</h3>
+          <h3>かすみ薬局・みのり薬局</h3>
           <p>
             地域のみなさまの健康を<br>
             そっと支える薬局として、<br>
@@ -332,7 +875,8 @@
             <a href="index.html">ホーム</a>
             <a href="about.html">薬局紹介</a>
             <a href="services.html">サービス内容</a>
-            <a href="access.html">営業時間・アクセス</a>
+            <a href="access.html">店舗情報</a>
+            <a href="legal.html">書面掲示事項</a>
             <a href="recruit.html">採用情報</a>
           </div>
         </div>
@@ -346,11 +890,53 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2025 かすみ薬局. All rights reserved.</p>
+        <p>&copy; 2025 かすみ薬局・みのり薬局. All rights reserved.</p>
       </div>
     </div>
   </footer>
 
-  <script src="common.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuToggle = document.querySelector('.menu-toggle');
+      const nav = document.querySelector('nav');
+      
+      if (menuToggle && nav) {
+        menuToggle.addEventListener('click', function(e) {
+          e.preventDefault();
+          const isActive = nav.classList.contains('active');
+          
+          if (isActive) {
+            nav.classList.remove('active');
+            menuToggle.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+            const spans = menuToggle.querySelectorAll('span');
+            spans[0].style.transform = 'none';
+            spans[1].style.opacity = '1';
+            spans[2].style.transform = 'none';
+          } else {
+            nav.classList.add('active');
+            menuToggle.setAttribute('aria-expanded', 'true');
+            document.body.style.overflow = 'hidden';
+            const spans = menuToggle.querySelectorAll('span');
+            spans[0].style.transform = 'rotate(45deg) translateY(9px)';
+            spans[1].style.opacity = '0';
+            spans[2].style.transform = 'rotate(-45deg) translateY(-9px)';
+          }
+        });
+
+        nav.querySelectorAll('a').forEach(function(link) {
+          link.addEventListener('click', function() {
+            nav.classList.remove('active');
+            menuToggle.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+            const spans = menuToggle.querySelectorAll('span');
+            spans[0].style.transform = 'none';
+            spans[1].style.opacity = '1';
+            spans[2].style.transform = 'none';
+          });
+        });
+      }
+    });
+  </script>
 </body>
 </html>
